@@ -164,7 +164,11 @@ class CalculatorHandler(BaseHTTPRequestHandler):
         value1 = data.get("txtNro1", [""])[0]
         value2 = data.get("txtNro2", [""])[0]
         operation = data.get("operation", [""])[0]
-        result = calculate(operation, value1, value2)
+        try:
+            result = calculate(operation, value1, value2)
+        except Exception:
+            self.respond(500, "text/plain; charset=utf-8", b"Internal Server Error")
+            return
         self.render_page(value1, value2, result)
 
     def render_page(self, value1: str, value2: str, result: str) -> None:
