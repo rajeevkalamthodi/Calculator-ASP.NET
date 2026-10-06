@@ -1,0 +1,58 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 2rem;
+}
+
+.calculadora {
+  max-width: 420px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.field {
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.field input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.buttons button {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+
+.resultado {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.resultado span {
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+.error {
+  color: #b00020;
+  margin-top: 0.75rem;
+}
