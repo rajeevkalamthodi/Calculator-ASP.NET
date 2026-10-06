@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import math
+import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs
 
@@ -135,8 +136,15 @@ def create_server(host: str = "127.0.0.1", port: int = 8000) -> ThreadingHTTPSer
     return ThreadingHTTPServer((host, port), CalculatorHandler)
 
 
+def get_runtime_bind() -> tuple[str, int]:
+    host = os.environ.get("HOST", "127.0.0.1")
+    port_value = os.environ.get("PORT", "8000")
+    return host, int(port_value)
+
+
 if __name__ == "__main__":
-    server = create_server()
+    host, port = get_runtime_bind()
+    server = create_server(host, port)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
