@@ -109,8 +109,6 @@ def format_number(value: float) -> str:
         return "NaN"
     if math.isinf(value):
         return "Infinity" if value > 0 else "-Infinity"
-    if float(value).is_integer():
-        return str(int(value))
     return str(value)
 
 
