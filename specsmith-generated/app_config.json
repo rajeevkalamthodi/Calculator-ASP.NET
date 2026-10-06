@@ -5,19 +5,19 @@
   },
   "ui": {
     "title": "Calculadora Web Forms",
-    "heading": "Calculator",
+    "heading": "Calculadora Web Forms",
     "labels": {
-      "number1": "Number 1",
-      "number2": "Number 2",
+      "number1": "Nro 1",
+      "number2": "Nro 2",
       "result": "Resultado"
     },
     "buttons": {
-      "add": "Somar",
-      "subtract": "Subtrair",
-      "multiply": "Multiplicar",
-      "divide": "Dividir",
-      "power": "Potência",
-      "sqrt": "RaizQ"
+      "add": "+",
+      "subtract": "-",
+      "multiply": "*",
+      "divide": "/",
+      "power": "^",
+      "sqrt": "sqrt"
     }
   }
 }

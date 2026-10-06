@@ -148,30 +148,42 @@ class CalculatorHandler(BaseHTTPRequestHandler):
             self.respond(200, "text/plain; charset=utf-8", b"ok")
             return
         if self.path != "/":
-            self.respond(404, "text/plain; charset=utf-8", b"Not Found")
+            self.respond(404, "text/plain; charset=utf-8", b"not found")
             return
-        self.render_page("", "", "")
+
+        page = HTML_TEMPLATE.format(
+            title=escape_html(APP_CONFIG.title),
+            heading=escape_html(APP_CONFIG.heading),
+            label_number1=escape_html(APP_CONFIG.label_number1),
+            label_number2=escape_html(APP_CONFIG.label_number2),
+            result_label=escape_html(APP_CONFIG.result_label),
+            button_add=escape_html(APP_CONFIG.button_add),
+            button_subtract=escape_html(APP_CONFIG.button_subtract),
+            button_multiply=escape_html(APP_CONFIG.button_multiply),
+            button_divide=escape_html(APP_CONFIG.button_divide),
+            button_power=escape_html(APP_CONFIG.button_power),
+            button_sqrt=escape_html(APP_CONFIG.button_sqrt),
+            runtime_host=escape_html(APP_CONFIG.runtime_host),
+            runtime_port=escape_html(str(APP_CONFIG.runtime_port)),
+            value1="",
+            value2="",
+            result="",
+        ).encode("utf-8")
+        self.respond(200, "text/html; charset=utf-8", page)
 
     def do_POST(self) -> None:
         if self.path != "/":
-            self.respond(404, "text/plain; charset=utf-8", b"Not Found")
+            self.respond(404, "text/plain; charset=utf-8", b"not found")
             return
 
-        length = int(self.headers.get("Content-Length", "0"))
-        raw_body = self.rfile.read(length).decode("utf-8")
-        data = parse_qs(raw_body, keep_blank_values=True)
+        content_length = int(self.headers.get("Content-Length", "0"))
+        body = self.rfile.read(content_length).decode("utf-8")
+        form = parse_qs(body)
+        value1 = form.get("txtNro1", [""])[0]
+        value2 = form.get("txtNro2", [""])[0]
+        operation = form.get("operation", [""])[0]
+        result = calculate(operation, value1, value2)
 
-        value1 = data.get("txtNro1", [""])[0]
-        value2 = data.get("txtNro2", [""])[0]
-        operation = data.get("operation", [""])[0]
-        try:
-            result = calculate(operation, value1, value2)
-        except Exception:
-            self.respond(500, "text/plain; charset=utf-8", b"Internal Server Error")
-            return
-        self.render_page(value1, value2, result)
-
-    def render_page(self, value1: str, value2: str, result: str) -> None:
         page = HTML_TEMPLATE.format(
             title=escape_html(APP_CONFIG.title),
             heading=escape_html(APP_CONFIG.heading),
