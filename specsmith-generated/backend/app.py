@@ -125,11 +125,19 @@ def _handle_calculate(body_bytes):
     try:
         result = calculate(operation, nro1, nro2)
     except FormatError as exc:
-        return _json_response({"error": str(exc)}, 400)
+        # Non-numeric input text -> .NET FormatException (index.aspx.cs).
+        return _json_response(
+            {"error": str(exc), "error_type": "FormatException"}, 400
+        )
     except CalculationError as exc:
-        return _json_response({"error": str(exc)}, 400)
+        # Divide by zero -> arithmetic error (btDividir_Click).
+        return _json_response(
+            {"error": str(exc), "error_type": "arithmetic"}, 400
+        )
     except ValueError as exc:
-        return _json_response({"error": str(exc)}, 400)
+        return _json_response(
+            {"error": str(exc), "error_type": "FormatException"}, 400
+        )
 
     return _json_response({"result": result})
 
