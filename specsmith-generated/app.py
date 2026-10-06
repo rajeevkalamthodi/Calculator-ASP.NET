@@ -127,23 +127,18 @@ def format_number(value: float) -> str:
 
 
 def calculate(operation: str, value1: str, value2: str) -> str:
-    left = parse_float(value1)
-    right = parse_float(value2)
-
     if operation == "add":
-        return format_number(left + right)
+        return format_number(parse_float(value1) + parse_float(value2))
     if operation == "subtract":
-        return format_number(left - right)
+        return format_number(parse_float(value1) - parse_float(value2))
     if operation == "multiply":
-        return format_number(left * right)
+        return format_number(parse_float(value1) * parse_float(value2))
     if operation == "divide":
-        if right == 0:
-            raise ZeroDivisionError("division by zero")
-        return format_number(left / right)
+        return format_number(parse_float(value1) / parse_float(value2))
     if operation == "power":
-        return format_number(left ** right)
+        return format_number(parse_float(value1) ** parse_float(value2))
     if operation == "sqrt":
-        return format_number(math.sqrt(left))
+        return format_number(math.sqrt(parse_float(value1)))
     return ""
 
 
