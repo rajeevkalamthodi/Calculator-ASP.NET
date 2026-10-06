@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "runId": "c19b3e28-78ea-4dd5-aed0-3bc98f013986",
+  "repository": "rajeevkalamthodi/Calculator-ASP.NET",
+  "branch": "feature/specsmith-proj_6426398d2114802a0efb6f5366f4d055-c19b3e28-78ea-4dd5-aed0-3bc98f013986",
+  "baseCommitSha": "88748700ac857e9f163c3848ff472362c49568ab",
+  "directory": "specsmith-generated",
+  "requirementsHash": "3a237ca2563e8e8f2c967c98fdfc24018b55020f2a517f112f06213beb55c1e2",
+  "nativeInputSha256": "922dfe75a5cd16c6a7c78c39d9838b5ba371e08bc1d0ec1a2856c4f203a4e12f",
+  "source": {
+    "scanJobId": "scan_1c24e369ce9b451878c7253af0395260",
+    "sourceRepository": "rajeevkalamthodi/calculator-asp.net",
+    "sourceCommit": "88748700ac857e9f163c3848ff472362c49568ab",
+    "specArtifactKey": "scans/scan_1c24e369ce9b451878c7253af0395260/attempts/1-scan-667f9ccb-0b70-4cb8-8900-77c89c0eecd5/spec.yaml",
+    "specSha256": "dffe1161c6b86fbcc8bfae473469962f9f1e6ba54bc6e66240d5a88b3b8798dd"
+  },
+  "features": [
+    {
+      "id": "module-other",
+      "name": "Other",
+      "category": "module",
+      "summary": "This is an ASP.NET Web Forms code-behind file implementing a simple calculator. It handles button click events (add, subtract, multiply, divide, power, square root) by parsing numeric input from text boxes and displaying the computed result in a label. It serves as the presentation-layer controller handling user inter…",
+      "sourceRefs": [
+        "#/modules/calculadorawebforms~1index-aspx",
+        "#/modules/calculadorawebforms~1index-aspx/functions/Page_Load",
+        "#/modules/calculadorawebforms~1index-aspx/functions/btSomar_Click",
+        "#/modules/calculadorawebforms~1index-aspx/functions/btSubtrair_Click",
+        "#/modules/calculadorawebforms~1index-aspx/functions/btMultiplicar_Click",
+        "#/modules/calculadorawebforms~1index-aspx/functions/btDividir_Click",
+        "#/modules/calculadorawebforms~1index-aspx/functions/btPotencia_Click",
+        "#/modules/calculadorawebforms~1index-aspx/functions/btRaizq_Click"
+      ],
+      "sourceRefsComplete": true
+    },
+    {
+      "id": "data-model",
+      "name": "Data model",
+      "category": "data",
+      "summary": "0 data models and 1 custom type",
+      "sourceRefs": [
+        "#/types/EventArgs"
+      ],
+      "sourceRefsComplete": true
+    }
+  ],
+  "acceptance": "Requires measured requirement coverage and human review. No automatic merge."
+}
