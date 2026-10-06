@@ -28,6 +28,10 @@ class AppConfig:
     button_sqrt: str
 
 
+class FloatOverflowError(OverflowError):
+    pass
+
+
 def load_config(config_path: Path | None = None) -> AppConfig:
     path = config_path or CONFIG_PATH
     with path.open("r", encoding="utf-8") as config_file:
@@ -100,8 +104,16 @@ HTML_TEMPLATE = """<!doctype html>
 """
 
 
-def parse_float(value: str) -> float:
-    return float(value)
+def parse_float(value: str | None) -> float:
+    if value is None:
+        raise TypeError("ArgumentNullException")
+    if value == "":
+        raise ValueError("FormatException")
+
+    parsed = float(value)
+    if math.isinf(parsed):
+        raise FloatOverflowError("OverflowException")
+    return parsed
 
 
 def format_number(value: float) -> str:
@@ -146,17 +158,14 @@ class CalculatorHandler(BaseHTTPRequestHandler):
             return
 
         length = int(self.headers.get("Content-Length", "0"))
-        body = self.rfile.read(length).decode("utf-8")
-        form = parse_qs(body, keep_blank_values=True)
-        value1 = form.get("txtNro1", [""])[0]
-        value2 = form.get("txtNro2", [""])[0]
-        operation = form.get("operation", [""])[0]
+        raw_body = self.rfile.read(length).decode("utf-8")
+        data = parse_qs(raw_body, keep_blank_values=True)
 
-        try:
-            result = calculate(operation, value1, value2)
-            self.render_page(value1, value2, result)
-        except Exception as exc:
-            self.respond(500, "text/plain; charset=utf-8", str(exc).encode("utf-8", errors="replace"))
+        value1 = data.get("txtNro1", [""])[0]
+        value2 = data.get("txtNro2", [""])[0]
+        operation = data.get("operation", [""])[0]
+        result = calculate(operation, value1, value2)
+        self.render_page(value1, value2, result)
 
     def render_page(self, value1: str, value2: str, result: str) -> None:
         page = HTML_TEMPLATE.format(
