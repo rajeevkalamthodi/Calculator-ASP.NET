@@ -10,13 +10,13 @@ HTML_TEMPLATE = """<!doctype html>
   <meta charset=\"utf-8\">
   <title>Calculadora Web Forms</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; }
-    form { display: grid; gap: 0.75rem; max-width: 28rem; }
-    .row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
-    label { min-width: 5rem; }
-    input[type=text] { padding: 0.35rem; width: 12rem; }
-    .actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .result { font-weight: bold; }
+    body {{ font-family: Arial, sans-serif; margin: 2rem; }}
+    form {{ display: grid; gap: 0.75rem; max-width: 28rem; }}
+    .row {{ display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }}
+    label {{ min-width: 5rem; }}
+    input[type=text] {{ padding: 0.35rem; width: 12rem; }}
+    .actions {{ display: flex; gap: 0.5rem; flex-wrap: wrap; }}
+    .result {{ font-weight: bold; }}
   </style>
 </head>
 <body>
@@ -51,9 +51,11 @@ def parse_float(value: str) -> float:
 
 def format_number(value: float) -> str:
     if math.isnan(value):
-        return "nan"
+        return "NaN"
     if math.isinf(value):
-        return "inf" if value > 0 else "-inf"
+        return "Infinity" if value > 0 else "-Infinity"
+    if float(value).is_integer():
+        return str(int(value))
     return str(value)
 
 
@@ -65,13 +67,7 @@ def calculate(operation: str, value1: str, value2: str) -> str:
     if operation == "multiply":
         return format_number(parse_float(value1) * parse_float(value2))
     if operation == "divide":
-        divisor = parse_float(value2)
-        dividend = parse_float(value1)
-        if divisor == 0.0:
-            if dividend == 0.0:
-                return format_number(float("nan"))
-            return format_number(float("inf") if dividend > 0 else float("-inf"))
-        return format_number(dividend / divisor)
+        return format_number(parse_float(value1) / parse_float(value2))
     if operation == "power":
         return format_number(parse_float(value1) ** parse_float(value2))
     if operation == "sqrt":
@@ -104,7 +100,7 @@ class CalculatorHandler(BaseHTTPRequestHandler):
         try:
             result = calculate(operation, value1, value2)
             self.render_page(value1, value2, result)
-        except Exception as exc:  # preserve failure surface as server error for invalid inputs
+        except Exception as exc:
             self.respond(500, "text/plain; charset=utf-8", str(exc).encode("utf-8", errors="replace"))
 
     def render_page(self, value1: str, value2: str, result: str) -> None:

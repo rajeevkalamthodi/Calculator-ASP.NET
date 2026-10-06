@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "python -m unittest discover -s tests -v"
+    "test": "python3 -m unittest discover -s tests -v"
   }
 }
