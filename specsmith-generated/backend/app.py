@@ -236,7 +236,18 @@ app = create_app()
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", "5000"))
+    import sys
+
+    port = None
+    for arg in sys.argv[1:]:
+        if arg.isdigit():
+            port = int(arg)
+            break
+        if arg.startswith("--port="):
+            port = int(arg.split("=", 1)[1])
+            break
+    if port is None:
+        port = int(os.environ.get("PORT", "5000"))
     httpd = make_server("127.0.0.1", port, app)
     print("CalculadoraWebForms serving on http://127.0.0.1:%d" % port)
     httpd.serve_forever()

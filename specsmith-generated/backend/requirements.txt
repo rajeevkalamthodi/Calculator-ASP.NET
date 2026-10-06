@@ -1,2 +1,2 @@
-Flask==3.0.0
-pytest==7.4.3
+# Backend runs on the Python standard library only; no third-party packages.
+# pytest is used for the regression suite and is provided by the environment.
