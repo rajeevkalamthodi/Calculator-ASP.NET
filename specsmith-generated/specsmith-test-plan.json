@@ -1,0 +1,891 @@
+{
+  "version": 1,
+  "specHash": "dffe1161c6b86fbcc8bfae473469962f9f1e6ba54bc6e66240d5a88b3b8798dd",
+  "cases": [
+    {
+      "id": "business-logic-0001",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#Page_Load\" implements: Empty page lifecycle handler for calculator web form.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#Page_Load",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#Page_Load",
+          "expected": "Empty page lifecycle handler for calculator web form.",
+          "explanation": "The handler is intentionally empty. Verify it does not alter any label text, viewstate, or input controls on either the first load (IsPostBack == false) or subsequent postbacks."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:Page_Load",
+      "requirementId": "business-logic-0001",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0002",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#btSomar_Click\" implements: Adds two text input numbers and displays the sum result.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+          "expected": "Adds two text input numbers and displays the sum result.",
+          "explanation": "Given numeric strings in both textboxes, the handler parses them (per current culture), adds them, and writes the sum to the result label. E.g. '2' + '3' yields '5'."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:btSomar_Click",
+      "requirementId": "business-logic-0002",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0005",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#btSubtrair_Click\" implements: Subtracts two input numbers and displays result in label.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+          "expected": "Subtracts two input numbers and displays result in label.",
+          "explanation": "The handler parses both inputs and writes their difference to the label in correct order (minuend - subtrahend). E.g. '5' - '3' yields '2'."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:btSubtrair_Click",
+      "requirementId": "business-logic-0005",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0008",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click\" implements: Multiplies two text input numbers and displays result in label.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+          "expected": "Multiplies two text input numbers and displays result in label.",
+          "explanation": "The handler parses both inputs, multiplies them, and writes the product to the label. E.g. '4' * '3' yields '12'."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:btMultiplicar_Click",
+      "requirementId": "business-logic-0008",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0011",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#btDividir_Click\" implements: Divides two input numbers and displays result in label.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+          "expected": "Divides two input numbers and displays result in label.",
+          "explanation": "The handler parses both inputs and writes the quotient to the label. Verify precision/type (integer vs floating-point division) matches the source, e.g. '7' / '2'."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:btDividir_Click",
+      "requirementId": "business-logic-0011",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0015",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#btPotencia_Click\" implements: Computes power of two input numbers and displays result in label.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+          "expected": "Computes power of two input numbers and displays result in label.",
+          "explanation": "The handler parses both inputs, computes the power, and writes the result to the label. E.g. base '2', exponent '3' yields '8'."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:btPotencia_Click",
+      "requirementId": "business-logic-0015",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0018",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#btRaizq_Click\" implements: Compute square root of input number and display result.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+          "expected": "Compute square root of input number and display result.",
+          "explanation": "The handler parses the single input and writes its square root to the label. E.g. '9' yields '3'."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:btRaizq_Click",
+      "requirementId": "business-logic-0018",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0021",
+      "name": "Page_Load preserves control values on postback",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#Page_Load",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "Input textboxes and result label after postback",
+          "expected": "Values remain unchanged by Page_Load",
+          "explanation": "Confirms the empty handler does not inadvertently interfere with viewstate-restored control values."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0021",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0022",
+      "name": "Addition with negative and decimal operands",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "btSomar_Click with inputs '-2.5' and '1.5'",
+          "expected": "Result label shows '-1' (or culture-formatted equivalent)",
+          "explanation": "Confirms sign and decimal handling, not just positive integers."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0022",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0024",
+      "name": "Subtraction yielding negative result",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "btSubtrair_Click with inputs '3' and '5'",
+          "expected": "Result label shows '-2'",
+          "explanation": "Confirms operand order and negative result formatting."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0024",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0026",
+      "name": "Multiplication by zero",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "btMultiplicar_Click with inputs '0' and '9999'",
+          "expected": "Result label shows '0'",
+          "explanation": "Confirms zero-operand handling without error."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0026",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0028",
+      "name": "Division producing non-terminating decimal",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "btDividir_Click with inputs '1' and '3'",
+          "expected": "Result label shows the expected rounded representation (e.g. '0.333...')",
+          "explanation": "Confirms consistent decimal precision and formatting behavior."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0028",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0031",
+      "name": "Power with zero and negative exponents",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "btPotencia_Click with base '2' and exponent '-1'",
+          "expected": "Result label shows '0.5'",
+          "explanation": "Confirms handling of negative exponents and the x^0 == 1 convention."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0031",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0033",
+      "name": "Square root of negative number",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "btRaizq_Click with input '-4'",
+          "expected": "Result label shows 'NaN' (Math.Sqrt returns NaN) without throwing",
+          "explanation": "Documents the negative-domain behavior so reconstruction preserves NaN rather than an exception."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0033",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0003",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btSomar_Click\" handles: Non-numeric input text",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSomar_Click error",
+          "expected": "FormatException",
+          "explanation": "When either textbox contains unparseable text (e.g. 'abc'), the parse call throws FormatException before any result is computed or displayed."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0003",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0006",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btSubtrair_Click\" handles: Non-numeric input text",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click error",
+          "expected": "FormatException",
+          "explanation": "Unparseable input (e.g. 'xyz') causes the parse call to throw FormatException before subtraction occurs."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0006",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0009",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click\" handles: non-numeric input",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click error",
+          "expected": "FormatException",
+          "explanation": "Unparseable input causes the parse call to throw FormatException before multiplication occurs."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0009",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0012",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btDividir_Click\" handles: non-numeric input",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btDividir_Click error",
+          "expected": "FormatException",
+          "explanation": "Unparseable input causes the parse call to throw FormatException before division occurs."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0012",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0013",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btDividir_Click\" handles: divide by zero",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btDividir_Click error",
+          "expected": "arithmetic",
+          "explanation": "The arithmetic error behavior depends on the operand type. Specify the exact exception type (DivideByZeroException) or the special float value so reconstruction matches the original."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0013",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0016",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btPotencia_Click\" handles: non-numeric input text",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click error",
+          "expected": "FormatException",
+          "explanation": "Unparseable base or exponent causes the parse call to throw FormatException before the power is computed."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0016",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0019",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btRaizq_Click\" handles: non-numeric input",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click error",
+          "expected": "FormatException",
+          "explanation": "Unparseable input causes the parse call to throw FormatException before the square root is computed."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0019",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0023",
+      "name": "Addition with empty input field",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "btSomar_Click with input1 '' and input2 '5'",
+          "expected": "Throws FormatException",
+          "explanation": "Empty string is not a valid number and should raise the same parsing error as non-numeric text."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0023",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0025",
+      "name": "Subtraction with whitespace-only input",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "btSubtrair_Click with input1 '   ' and input2 '2'",
+          "expected": "Throws FormatException",
+          "explanation": "Whitespace-only strings are not valid numbers and should raise a parsing error."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0025",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0027",
+      "name": "Multiplication overflow with very large operands",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "btMultiplicar_Click with two maximum-magnitude integer inputs",
+          "expected": "Either OverflowException or saturated/wrapped result consistent with the parsing type",
+          "explanation": "Documents the actual overflow behavior for extreme inputs so reconstruction preserves it."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0027",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0029",
+      "name": "Division with non-numeric divisor only",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "btDividir_Click with input1 '10' and input2 'abc'",
+          "expected": "Throws FormatException",
+          "explanation": "Confirms the error is raised even when only the second operand is invalid."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0029",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0030",
+      "name": "Zero divided by zero",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "btDividir_Click with input1 '0' and input2 '0'",
+          "expected": "DivideByZeroException (integer) or NaN result (floating-point) per operand type",
+          "explanation": "Documents the indeterminate-form behavior distinct from n/0."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0030",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0032",
+      "name": "Power producing NaN for invalid real domain",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "btPotencia_Click with base '-2' and exponent '0.5'",
+          "expected": "Result label shows 'NaN' (Math.Pow returns NaN) without throwing",
+          "explanation": "Documents domain-edge behavior distinct from a parsing exception."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0032",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0034",
+      "name": "Square root with empty input",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "btRaizq_Click with input ''",
+          "expected": "Throws FormatException",
+          "explanation": "Empty string is not a valid number and should raise the same parsing error as non-numeric text."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0034",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "pc-0f85b6a703726f061866",
+      "requirementId": "pc-0f85b6a703726f061866",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btDividir_Click: on divide by zero: raises arithmetic",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btDividir_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btDividir_Click",
+          "expected": "on divide by zero: raises arithmetic",
+          "explanation": "Postcondition from spec: on divide by zero: raises arithmetic"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse and divide textbox values",
+          "details": "float.Parse(txtNro1) / float.Parse(txtNro2), assign to label",
+          "expression": "float.Parse(txtNro1.Text)/float.Parse(txtNro2.Text)"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btDividir_Click"
+    },
+    {
+      "id": "pc-3497a55c9b153e061e9b",
+      "requirementId": "pc-3497a55c9b153e061e9b",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btPotencia_Click: on non-numeric input text: raises FormatException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btPotencia_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btPotencia_Click",
+          "expected": "on non-numeric input text: raises FormatException",
+          "explanation": "Postcondition from spec: on non-numeric input text: raises FormatException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse inputs and compute power",
+          "details": "Math.Pow on parsed txtNro1, txtNro2 values",
+          "calls": "Math.Pow",
+          "expression": "Math.Pow(float.Parse(txtNro1.Text), float.Parse(txtNro2.Text))"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btPotencia_Click"
+    },
+    {
+      "id": "pc-995fa66224495710893c",
+      "requirementId": "pc-995fa66224495710893c",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btMultiplicar_Click: on non-numeric input: raises FormatException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btMultiplicar_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btMultiplicar_Click",
+          "expected": "on non-numeric input: raises FormatException",
+          "explanation": "Postcondition from spec: on non-numeric input: raises FormatException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse inputs and multiply",
+          "details": "float.Parse both textboxes, multiply, set label",
+          "expression": "float.Parse(txtNro1.Text) * float.Parse(txtNro2.Text)"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btMultiplicar_Click"
+    },
+    {
+      "id": "pc-d834ced3931969a4af06",
+      "requirementId": "pc-d834ced3931969a4af06",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btSomar_Click: on Non-numeric input text: raises FormatException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btSomar_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btSomar_Click",
+          "expected": "on Non-numeric input text: raises FormatException",
+          "explanation": "Postcondition from spec: on Non-numeric input text: raises FormatException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse and sum two inputs",
+          "details": "Parses txtNro1 and txtNro2 as float, adds them",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text) + float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Display result",
+          "details": "Assigns sum string to lbResultado.Text"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btSomar_Click"
+    },
+    {
+      "id": "pc-e14ed8f9d49eed3d4fbb",
+      "requirementId": "pc-e14ed8f9d49eed3d4fbb",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btDividir_Click: on non-numeric input: raises FormatException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btDividir_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btDividir_Click",
+          "expected": "on non-numeric input: raises FormatException",
+          "explanation": "Postcondition from spec: on non-numeric input: raises FormatException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse and divide textbox values",
+          "details": "float.Parse(txtNro1) / float.Parse(txtNro2), assign to label",
+          "expression": "float.Parse(txtNro1.Text)/float.Parse(txtNro2.Text)"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btDividir_Click"
+    },
+    {
+      "id": "pc-e415c2bd2c4320357685",
+      "requirementId": "pc-e415c2bd2c4320357685",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btSubtrair_Click: on Non-numeric input text: raises FormatException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btSubtrair_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btSubtrair_Click",
+          "expected": "on Non-numeric input text: raises FormatException",
+          "explanation": "Postcondition from spec: on Non-numeric input text: raises FormatException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse and subtract inputs",
+          "details": "float.Parse(txtNro1) - float.Parse(txtNro2), set label",
+          "expression": "float.Parse(txtNro1.Text) - float.Parse(txtNro2.Text)"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btSubtrair_Click"
+    },
+    {
+      "id": "pc-f22ff1bbf691db3724af",
+      "requirementId": "pc-f22ff1bbf691db3724af",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btRaizq_Click: on non-numeric input: raises FormatException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btRaizq_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btRaizq_Click",
+          "expected": "on non-numeric input: raises FormatException",
+          "explanation": "Postcondition from spec: on non-numeric input: raises FormatException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse and compute square root",
+          "details": "Math.Sqrt(float.Parse(txtNro1.Text))",
+          "calls": "Math.Sqrt,float.Parse"
+        },
+        {
+          "step": 2,
+          "action": "Display result",
+          "details": "Assigns to lbResultado.Text"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btRaizq_Click"
+    },
+    {
+      "id": "side-effect-0004",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btSomar_Click\" side-effect: Updates UI label text with result",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSomar_Click side-effect",
+          "expected": "other",
+          "explanation": "Updates UI label text with result"
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "side-effect-0004",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "side-effect-0007",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btSubtrair_Click\" side-effect: Updates UI label with computed result",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click side-effect",
+          "expected": "other",
+          "explanation": "Updates UI label with computed result"
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "side-effect-0007",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "side-effect-0010",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click\" side-effect: Updates lbResultado label text in UI",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click side-effect",
+          "expected": "other",
+          "explanation": "Updates lbResultado label text in UI"
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "side-effect-0010",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "side-effect-0014",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btDividir_Click\" side-effect: Updates lbResultado.Text UI label",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btDividir_Click side-effect",
+          "expected": "other",
+          "explanation": "Updates lbResultado.Text UI label"
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "side-effect-0014",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "side-effect-0017",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btPotencia_Click\" side-effect: Updates UI label text with result",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click side-effect",
+          "expected": "other",
+          "explanation": "Updates UI label text with result"
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "side-effect-0017",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "side-effect-0020",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btRaizq_Click\" side-effect: Updates UI label with computed result",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click side-effect",
+          "expected": "other",
+          "explanation": "Updates UI label with computed result"
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "side-effect-0020",
+      "featureIds": [],
+      "moduleRefs": []
+    }
+  ],
+  "workflows": [
+    {
+      "id": "workflow-67b458c0a4523e938806",
+      "description": "user submits operands and operation via web form"
+    },
+    {
+      "id": "workflow-91921a60ff286eb3725d",
+      "description": "server computes and returns the arithmetic result"
+    }
+  ]
+}

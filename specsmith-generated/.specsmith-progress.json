@@ -4,10 +4,10 @@
   "jobId": "build_2af308618811dd3e6bdb7c7b5c13ed49",
   "stage": "build",
   "attempt": 1,
-  "snapshotId": "1-1-f6472453974f62b1",
-  "sourceHash": "f6472453974f62b1b0cebe1b45ae6b941b3fae7b64c0680acecbd2a3273f942c",
-  "fileCount": 1,
-  "createdAt": "2026-10-06T17:05:57.582Z",
-  "checkpoint": "plan: record frozen requirements and development branch",
+  "snapshotId": "1-2-db00c34f00bf3a79",
+  "sourceHash": "db00c34f00bf3a793c313bd75733731ce2614936cbabd2c6123813eef07c414e",
+  "fileCount": 2,
+  "createdAt": "2026-10-06T17:07:12.516Z",
+  "checkpoint": "incremental source checkpoint; work in progress",
   "acceptance": "not-verified-by-this-commit"
 }
