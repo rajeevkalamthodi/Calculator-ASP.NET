@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "python3 -c \"print('no frontend build step required')\"",
+    "build": "python3 build_frontend.py",
     "test": "python3 -m unittest discover -s tests -v"
   }
 }
