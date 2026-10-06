@@ -16,7 +16,12 @@ from calculator import (
     calculate,
 )
 
-STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+STATIC_DIR = os.environ.get(
+    "FRONTEND_DIST",
+    os.path.abspath(
+        os.path.join(os.path.dirname(__file__), "..", "frontend", "dist")
+    ),
+)
 
 
 def create_app():
