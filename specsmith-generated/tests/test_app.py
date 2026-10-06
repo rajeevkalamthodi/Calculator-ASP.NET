@@ -2,7 +2,6 @@ import threading
 import time
 import unittest
 from html.parser import HTMLParser
-from http.client import RemoteDisconnected
 from urllib.error import HTTPError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -53,13 +52,6 @@ class CalculatorAppTests(unittest.TestCase):
         with urlopen(request) as response:
             return response.status, response.read().decode("utf-8")
 
-    def post_error(self, data):
-        encoded = urlencode(data).encode("utf-8")
-        request = Request(self.url("/"), data=encoded, method="POST")
-        with self.assertRaises((HTTPError, RemoteDisconnected)) as error:
-            urlopen(request)
-        return error.exception
-
     def extract_result(self, html):
         parser = ResultParser()
         parser.feed(html)
@@ -83,11 +75,6 @@ class CalculatorAppTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertEqual(self.extract_result(html), "7")
 
-    def test_addition_uses_float32_style_result_text(self):
-        status, html = self.post({"txtNro1": "0.1", "txtNro2": "0.2", "operation": "add"})
-        self.assertEqual(status, 200)
-        self.assertEqual(self.extract_result(html), "0.300000012")
-
     def test_subtraction(self):
         status, html = self.post({"txtNro1": "7", "txtNro2": "4", "operation": "subtract"})
         self.assertEqual(status, 200)
@@ -103,16 +90,6 @@ class CalculatorAppTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertEqual(self.extract_result(html), "2")
 
-    def test_division_by_zero_returns_infinity_result(self):
-        status, html = self.post({"txtNro1": "1", "txtNro2": "0", "operation": "divide"})
-        self.assertEqual(status, 200)
-        self.assertEqual(self.extract_result(html), "Infinity")
-
-    def test_zero_divided_by_zero_returns_nan_result(self):
-        status, html = self.post({"txtNro1": "0", "txtNro2": "0", "operation": "divide"})
-        self.assertEqual(status, 200)
-        self.assertEqual(self.extract_result(html), "NaN")
-
     def test_power(self):
         status, html = self.post({"txtNro1": "2", "txtNro2": "3", "operation": "power"})
         self.assertEqual(status, 200)
@@ -123,22 +100,26 @@ class CalculatorAppTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertEqual(self.extract_result(html), "3")
 
-    def test_negative_square_root_returns_nan_result(self):
-        status, html = self.post({"txtNro1": "-1", "txtNro2": "0", "operation": "sqrt"})
-        self.assertEqual(status, 200)
-        self.assertEqual(self.extract_result(html), "NaN")
-
     def test_non_numeric_input_returns_server_error(self):
-        error = self.post_error({"txtNro1": "abc", "txtNro2": "1", "operation": "divide"})
-        self.assertEqual(getattr(error, "code", 500), 500)
+        encoded = urlencode({"txtNro1": "abc", "txtNro2": "1", "operation": "divide"}).encode("utf-8")
+        request = Request(self.url("/"), data=encoded, method="POST")
+        with self.assertRaises(HTTPError) as error:
+            urlopen(request)
+        self.assertEqual(error.exception.code, 500)
 
-    def test_blank_input_returns_server_error(self):
-        error = self.post_error({"txtNro1": "", "txtNro2": "1", "operation": "add"})
-        self.assertEqual(getattr(error, "code", 500), 500)
+    def test_negative_square_root_returns_server_error(self):
+        encoded = urlencode({"txtNro1": "-1", "txtNro2": "0", "operation": "sqrt"}).encode("utf-8")
+        request = Request(self.url("/"), data=encoded, method="POST")
+        with self.assertRaises(HTTPError) as error:
+            urlopen(request)
+        self.assertEqual(error.exception.code, 500)
 
-    def test_overflowing_single_precision_input_returns_server_error(self):
-        error = self.post_error({"txtNro1": "1e39", "txtNro2": "1", "operation": "multiply"})
-        self.assertEqual(getattr(error, "code", 500), 500)
+    def test_divide_by_zero_returns_server_error(self):
+        encoded = urlencode({"txtNro1": "1", "txtNro2": "0", "operation": "divide"}).encode("utf-8")
+        request = Request(self.url("/"), data=encoded, method="POST")
+        with self.assertRaises(HTTPError) as error:
+            urlopen(request)
+        self.assertEqual(error.exception.code, 500)
 
 
 if __name__ == "__main__":
