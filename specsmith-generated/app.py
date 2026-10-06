@@ -1,67 +1,15 @@
 from __future__ import annotations
 
-import json
 import math
 import os
-from dataclasses import dataclass
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from pathlib import Path
 from urllib.parse import parse_qs
-
-CONFIG_PATH = Path(__file__).with_name("app_config.json")
-
-
-@dataclass(frozen=True)
-class AppConfig:
-    runtime_host: str
-    runtime_port: int
-    title: str
-    heading: str
-    label_number1: str
-    label_number2: str
-    result_label: str
-    button_add: str
-    button_subtract: str
-    button_multiply: str
-    button_divide: str
-    button_power: str
-    button_sqrt: str
-
-
-def load_config(config_path: Path | None = None) -> AppConfig:
-    path = config_path or CONFIG_PATH
-    with path.open("r", encoding="utf-8") as config_file:
-        raw = json.load(config_file)
-
-    runtime = raw["runtime"]
-    ui = raw["ui"]
-    labels = ui["labels"]
-    buttons = ui["buttons"]
-
-    return AppConfig(
-        runtime_host=str(runtime["host"]),
-        runtime_port=int(runtime["port"]),
-        title=str(ui["title"]),
-        heading=str(ui["heading"]),
-        label_number1=str(labels["number1"]),
-        label_number2=str(labels["number2"]),
-        result_label=str(labels["result"]),
-        button_add=str(buttons["add"]),
-        button_subtract=str(buttons["subtract"]),
-        button_multiply=str(buttons["multiply"]),
-        button_divide=str(buttons["divide"]),
-        button_power=str(buttons["power"]),
-        button_sqrt=str(buttons["sqrt"]),
-    )
-
-
-APP_CONFIG = load_config()
 
 HTML_TEMPLATE = """<!doctype html>
 <html lang=\"en\">
 <head>
   <meta charset=\"utf-8\">
-  <title>{title}</title>
+  <title>Calculadora Web Forms</title>
   <style>
     body {{ font-family: Arial, sans-serif; margin: 2rem; }}
     form {{ display: grid; gap: 0.75rem; max-width: 28rem; }}
@@ -70,31 +18,29 @@ HTML_TEMPLATE = """<!doctype html>
     input[type=text] {{ padding: 0.35rem; width: 12rem; }}
     .actions {{ display: flex; gap: 0.5rem; flex-wrap: wrap; }}
     .result {{ font-weight: bold; }}
-    .config {{ margin-top: 1rem; color: #444; font-size: 0.95rem; }}
   </style>
 </head>
 <body>
-  <h1>{heading}</h1>
+  <h1>Calculator</h1>
   <form method=\"post\" action=\"/\">
     <div class=\"row\">
-      <label for=\"txtNro1\">{label_number1}</label>
+      <label for=\"txtNro1\">Number 1</label>
       <input id=\"txtNro1\" name=\"txtNro1\" type=\"text\" value=\"{value1}\">
     </div>
     <div class=\"row\">
-      <label for=\"txtNro2\">{label_number2}</label>
+      <label for=\"txtNro2\">Number 2</label>
       <input id=\"txtNro2\" name=\"txtNro2\" type=\"text\" value=\"{value2}\">
     </div>
     <div class=\"actions\">
-      <button type=\"submit\" name=\"operation\" value=\"add\">{button_add}</button>
-      <button type=\"submit\" name=\"operation\" value=\"subtract\">{button_subtract}</button>
-      <button type=\"submit\" name=\"operation\" value=\"multiply\">{button_multiply}</button>
-      <button type=\"submit\" name=\"operation\" value=\"divide\">{button_divide}</button>
-      <button type=\"submit\" name=\"operation\" value=\"power\">{button_power}</button>
-      <button type=\"submit\" name=\"operation\" value=\"sqrt\">{button_sqrt}</button>
+      <button type=\"submit\" name=\"operation\" value=\"add\">Somar</button>
+      <button type=\"submit\" name=\"operation\" value=\"subtract\">Subtrair</button>
+      <button type=\"submit\" name=\"operation\" value=\"multiply\">Multiplicar</button>
+      <button type=\"submit\" name=\"operation\" value=\"divide\">Dividir</button>
+      <button type=\"submit\" name=\"operation\" value=\"power\">Potência</button>
+      <button type=\"submit\" name=\"operation\" value=\"sqrt\">RaizQ</button>
     </div>
-    <div class=\"result\">{result_label}: <span id=\"lbResultado\">{result}</span></div>
+    <div class=\"result\">Resultado: <span id=\"lbResultado\">{result}</span></div>
   </form>
-  <div class=\"config\">Runtime default: <span id=\"configRuntimeHost\">{runtime_host}</span>:<span id=\"configRuntimePort\">{runtime_port}</span></div>
 </body>
 </html>
 """
@@ -160,19 +106,6 @@ class CalculatorHandler(BaseHTTPRequestHandler):
 
     def render_page(self, value1: str, value2: str, result: str) -> None:
         page = HTML_TEMPLATE.format(
-            title=escape_html(APP_CONFIG.title),
-            heading=escape_html(APP_CONFIG.heading),
-            label_number1=escape_html(APP_CONFIG.label_number1),
-            label_number2=escape_html(APP_CONFIG.label_number2),
-            result_label=escape_html(APP_CONFIG.result_label),
-            button_add=escape_html(APP_CONFIG.button_add),
-            button_subtract=escape_html(APP_CONFIG.button_subtract),
-            button_multiply=escape_html(APP_CONFIG.button_multiply),
-            button_divide=escape_html(APP_CONFIG.button_divide),
-            button_power=escape_html(APP_CONFIG.button_power),
-            button_sqrt=escape_html(APP_CONFIG.button_sqrt),
-            runtime_host=escape_html(APP_CONFIG.runtime_host),
-            runtime_port=escape_html(str(APP_CONFIG.runtime_port)),
             value1=escape_html(value1),
             value2=escape_html(value2),
             result=escape_html(result),
@@ -204,8 +137,8 @@ def create_server(host: str = "127.0.0.1", port: int = 8000) -> ThreadingHTTPSer
 
 
 def get_runtime_bind() -> tuple[str, int]:
-    host = os.environ.get("HOST", APP_CONFIG.runtime_host)
-    port_value = os.environ.get("PORT", str(APP_CONFIG.runtime_port))
+    host = os.environ.get("HOST", "127.0.0.1")
+    port_value = os.environ.get("PORT", "8000")
     return host, int(port_value)
 
 

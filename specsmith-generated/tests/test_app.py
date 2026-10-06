@@ -6,7 +6,7 @@ from urllib.error import HTTPError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-from app import APP_CONFIG, create_server, get_runtime_bind, load_config
+from app import create_server
 
 
 class ResultParser(HTMLParser):
@@ -26,28 +26,6 @@ class ResultParser(HTMLParser):
     def handle_data(self, data):
         if self.capture:
             self.result += data
-
-
-class ConfigParser(HTMLParser):
-    def __init__(self):
-        super().__init__()
-        self.capture = None
-        self.values = {}
-
-    def handle_starttag(self, tag, attrs):
-        attrs_dict = dict(attrs)
-        element_id = attrs_dict.get("id")
-        if tag == "span" and element_id in {"configRuntimeHost", "configRuntimePort"}:
-            self.capture = element_id
-            self.values[element_id] = ""
-
-    def handle_endtag(self, tag):
-        if tag == "span" and self.capture:
-            self.capture = None
-
-    def handle_data(self, data):
-        if self.capture:
-            self.values[self.capture] += data
 
 
 class CalculatorAppTests(unittest.TestCase):
@@ -79,11 +57,6 @@ class CalculatorAppTests(unittest.TestCase):
         parser.feed(html)
         return parser.result
 
-    def extract_config(self, html):
-        parser = ConfigParser()
-        parser.feed(html)
-        return parser.values
-
     def test_health_endpoint(self):
         with urlopen(self.url("/health")) as response:
             self.assertEqual(response.status, 200)
@@ -96,25 +69,6 @@ class CalculatorAppTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertIn("Calculator", html)
         self.assertEqual(self.extract_result(html), "")
-
-    def test_loaded_configuration_is_applied_to_page(self):
-        with urlopen(self.url("/")) as response:
-            html = response.read().decode("utf-8")
-        config_values = self.extract_config(html)
-        self.assertIn(APP_CONFIG.title, html)
-        self.assertIn(APP_CONFIG.heading, html)
-        self.assertIn(APP_CONFIG.button_power, html)
-        self.assertEqual(config_values["configRuntimeHost"], APP_CONFIG.runtime_host)
-        self.assertEqual(config_values["configRuntimePort"], str(APP_CONFIG.runtime_port))
-
-    def test_config_file_is_loaded(self):
-        config = load_config()
-        self.assertEqual(config.runtime_host, "127.0.0.1")
-        self.assertEqual(config.runtime_port, 8000)
-        self.assertEqual(config.button_divide, "Dividir")
-
-    def test_runtime_bind_uses_config_defaults(self):
-        self.assertEqual(get_runtime_bind(), (APP_CONFIG.runtime_host, APP_CONFIG.runtime_port))
 
     def test_addition(self):
         status, html = self.post({"txtNro1": "3", "txtNro2": "4", "operation": "add"})
