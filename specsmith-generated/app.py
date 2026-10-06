@@ -3,12 +3,14 @@ from __future__ import annotations
 import json
 import math
 import os
+import struct
 from dataclasses import dataclass
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs
 
 CONFIG_PATH = Path(__file__).with_name("app_config.json")
+FLOAT32_MAX = 3.4028234663852886e38
 
 
 @dataclass(frozen=True)
@@ -26,6 +28,19 @@ class AppConfig:
     button_divide: str
     button_power: str
     button_sqrt: str
+
+
+class OverflowException(OverflowError):
+    """Raised when a parsed value is outside the single-precision float range."""
+
+
+class DotNetMathDomainError(ValueError):
+    """Raised to model .NET Math domain results such as sqrt of a negative number."""
+
+
+class DotNetDivideByZeroError(ZeroDivisionError):
+    """Raised to model .NET floating-point division by zero behavior."""
+
 
 
 def load_config(config_path: Path | None = None) -> AppConfig:
@@ -100,8 +115,20 @@ HTML_TEMPLATE = """<!doctype html>
 """
 
 
-def parse_float(value: str) -> float:
-    return float(value)
+def to_float32(value: float) -> float:
+    return struct.unpack("!f", struct.pack("!f", float(value)))[0]
+
+
+def parse_float(value: str | None) -> float:
+    if value is None:
+        raise TypeError("ArgumentNullException")
+    if value == "":
+        raise ValueError("FormatException")
+
+    parsed = float(value)
+    if math.isfinite(parsed) and abs(parsed) > FLOAT32_MAX:
+        raise OverflowException("OverflowException")
+    return to_float32(parsed)
 
 
 def format_number(value: float) -> str:
@@ -109,24 +136,61 @@ def format_number(value: float) -> str:
         return "NaN"
     if math.isinf(value):
         return "Infinity" if value > 0 else "-Infinity"
-    if float(value).is_integer():
-        return str(int(value))
-    return str(value)
+
+    value32 = to_float32(value)
+    if math.isnan(value32):
+        return "NaN"
+    if math.isinf(value32):
+        return "Infinity" if value32 > 0 else "-Infinity"
+
+    text = format(value32, ".9g")
+    if "e" in text:
+        mantissa, exponent = text.split("e")
+        exponent = str(int(exponent))
+        text = f"{mantissa}E{exponent}"
+    return text
 
 
-def calculate(operation: str, value1: str, value2: str) -> str:
+def divide_float32(left: float, right: float) -> float:
+    if right == 0.0:
+        if left == 0.0:
+            raise DotNetMathDomainError("NaN")
+        raise DotNetDivideByZeroError("Infinity")
+    return to_float32(left / right)
+
+
+def sqrt_float32(value: float) -> float:
+    if value < 0:
+        raise DotNetMathDomainError("NaN")
+    return float(math.sqrt(value))
+
+
+def power_float32(left: float, right: float) -> float:
+    return float(math.pow(left, right))
+
+
+def calculate(operation: str, value1: str | None, value2: str | None) -> str:
     if operation == "add":
-        return format_number(parse_float(value1) + parse_float(value2))
+        return format_number(to_float32(parse_float(value1) + parse_float(value2)))
     if operation == "subtract":
-        return format_number(parse_float(value1) - parse_float(value2))
+        return format_number(to_float32(parse_float(value1) - parse_float(value2)))
     if operation == "multiply":
-        return format_number(parse_float(value1) * parse_float(value2))
+        return format_number(to_float32(parse_float(value1) * parse_float(value2)))
     if operation == "divide":
-        return format_number(parse_float(value1) / parse_float(value2))
+        left = parse_float(value1)
+        right = parse_float(value2)
+        if right == 0.0:
+            if left == 0.0:
+                return format_number(float("nan"))
+            return format_number(float("inf") if left > 0 else float("-inf"))
+        return format_number(to_float32(left / right))
     if operation == "power":
-        return format_number(parse_float(value1) ** parse_float(value2))
+        return format_number(power_float32(parse_float(value1), parse_float(value2)))
     if operation == "sqrt":
-        return format_number(math.sqrt(parse_float(value1)))
+        parsed = parse_float(value1)
+        if parsed < 0:
+            return format_number(float("nan"))
+        return format_number(sqrt_float32(parsed))
     return ""
 
 
@@ -146,17 +210,14 @@ class CalculatorHandler(BaseHTTPRequestHandler):
             return
 
         length = int(self.headers.get("Content-Length", "0"))
-        body = self.rfile.read(length).decode("utf-8")
-        form = parse_qs(body, keep_blank_values=True)
-        value1 = form.get("txtNro1", [""])[0]
-        value2 = form.get("txtNro2", [""])[0]
-        operation = form.get("operation", [""])[0]
+        raw_body = self.rfile.read(length).decode("utf-8")
+        data = parse_qs(raw_body, keep_blank_values=True)
 
-        try:
-            result = calculate(operation, value1, value2)
-            self.render_page(value1, value2, result)
-        except Exception as exc:
-            self.respond(500, "text/plain; charset=utf-8", str(exc).encode("utf-8", errors="replace"))
+        value1 = data.get("txtNro1", [""])[0]
+        value2 = data.get("txtNro2", [""])[0]
+        operation = data.get("operation", [""])[0]
+        result = calculate(operation, value1, value2)
+        self.render_page(value1, value2, result)
 
     def render_page(self, value1: str, value2: str, result: str) -> None:
         page = HTML_TEMPLATE.format(
