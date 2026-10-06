@@ -1,0 +1,23 @@
+{
+  "runtime": {
+    "host": "127.0.0.1",
+    "port": 8000
+  },
+  "ui": {
+    "title": "Calculadora Web Forms",
+    "heading": "Calculator",
+    "labels": {
+      "number1": "Number 1",
+      "number2": "Number 2",
+      "result": "Resultado"
+    },
+    "buttons": {
+      "add": "Somar",
+      "subtract": "Subtrair",
+      "multiply": "Multiplicar",
+      "divide": "Dividir",
+      "power": "Potência",
+      "sqrt": "RaizQ"
+    }
+  }
+}
