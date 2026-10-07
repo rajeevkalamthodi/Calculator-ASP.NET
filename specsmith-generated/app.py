@@ -116,6 +116,13 @@ def parse_float(value: str | None) -> float:
     return parsed
 
 
+def parse_nonnegative_float(value: str | None) -> float:
+    parsed = parse_float(value)
+    if parsed < 0:
+        raise ValueError("Negative square root")
+    return parsed
+
+
 def format_number(value: float) -> str:
     if math.isnan(value):
         return "NaN"
