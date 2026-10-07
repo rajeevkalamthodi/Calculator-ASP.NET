@@ -116,26 +116,14 @@ def parse_float(value: str | None) -> float:
     return parsed
 
 
-def parse_nonnegative_float(value: str | None) -> float:
-    parsed = parse_float(value)
-    if parsed < 0:
-        raise ValueError("Negative square root")
-    return parsed
-
-
 def format_number(value: float) -> str:
     if math.isnan(value):
         return "NaN"
     if math.isinf(value):
         return "Infinity" if value > 0 else "-Infinity"
-    if value.is_integer():
+    if float(value).is_integer():
         return str(int(value))
-    text = format(value, ".15g")
-    if "e" in text or "E" in text:
-        return text
-    if "." in text:
-        text = text.rstrip("0").rstrip(".")
-    return text
+    return str(value)
 
 
 def calculate(operation: str, value1: str, value2: str) -> str:
@@ -150,7 +138,7 @@ def calculate(operation: str, value1: str, value2: str) -> str:
     if operation == "power":
         return format_number(parse_float(value1) ** parse_float(value2))
     if operation == "sqrt":
-        return format_number(math.sqrt(parse_nonnegative_float(value1)))
+        return format_number(math.sqrt(parse_float(value1)))
     return ""
 
 
