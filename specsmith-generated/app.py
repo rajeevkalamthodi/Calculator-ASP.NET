@@ -128,6 +128,8 @@ def format_number(value: float) -> str:
         return "NaN"
     if math.isinf(value):
         return "Infinity" if value > 0 else "-Infinity"
+    if value.is_integer():
+        return str(int(value))
     return str(value)
 
 
@@ -143,7 +145,7 @@ def calculate(operation: str, value1: str, value2: str) -> str:
     if operation == "power":
         return format_number(parse_float(value1) ** parse_float(value2))
     if operation == "sqrt":
-        return format_number(math.sqrt(parse_float(value1)))
+        return format_number(math.sqrt(parse_nonnegative_float(value1)))
     return ""
 
 
