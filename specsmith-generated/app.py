@@ -130,7 +130,12 @@ def format_number(value: float) -> str:
         return "Infinity" if value > 0 else "-Infinity"
     if value.is_integer():
         return str(int(value))
-    return repr(value)
+    text = format(value, ".15g")
+    if "e" in text or "E" in text:
+        return text
+    if "." in text:
+        text = text.rstrip("0").rstrip(".")
+    return text
 
 
 def calculate(operation: str, value1: str, value2: str) -> str:
