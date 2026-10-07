@@ -4,7 +4,6 @@ import json
 import math
 import os
 from dataclasses import dataclass
-from decimal import Decimal, InvalidOperation
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs
@@ -131,7 +130,7 @@ def format_number(value: float) -> str:
         return "Infinity" if value > 0 else "-Infinity"
     if value.is_integer():
         return str(int(value))
-    return str(Decimal(str(value)).normalize())
+    return repr(value)
 
 
 def calculate(operation: str, value1: str, value2: str) -> str:
