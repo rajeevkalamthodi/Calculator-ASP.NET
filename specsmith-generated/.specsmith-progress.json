@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "projectId": "proj_123ff848cc43b80898a91682f132b43f",
-  "jobId": "build_6638c38a68afe8a97736f7d5fb1f1ffe",
-  "stage": "build",
-  "attempt": 4,
-  "snapshotId": "4-22-e4a8c3fe10b884b4",
-  "sourceHash": "e4a8c3fe10b884b470156ada4d3559f1882b9f52611865d5e19781ff70e88554",
+  "jobId": "build_2cca44ee1093c9613843ac2c375a5e14",
+  "stage": "test",
+  "attempt": 2,
+  "snapshotId": "2-1-9c19654d4057ee09",
+  "sourceHash": "9c19654d4057ee09899a6ef175a291edc67fcab1800ffd781eeab8abb847aa6c",
   "fileCount": 10,
-  "createdAt": "2026-10-07T02:16:51.564Z",
-  "checkpoint": "plan: retain frozen requirements on the upgraded engine",
+  "createdAt": "2026-10-07T17:56:23.906Z",
+  "checkpoint": "Test evidence handoff: publish qualified run metadata before checkout",
   "acceptance": "not-verified-by-this-commit"
 }
