@@ -4,10 +4,10 @@
   "jobId": "build_2cca44ee1093c9613843ac2c375a5e14",
   "stage": "test",
   "attempt": 2,
-  "snapshotId": "2-1-9c19654d4057ee09",
-  "sourceHash": "9c19654d4057ee09899a6ef175a291edc67fcab1800ffd781eeab8abb847aa6c",
+  "snapshotId": "2-2-c119ba0c1f92cdb8",
+  "sourceHash": "c119ba0c1f92cdb8e5af4e51612c030e6af700ff8243222778875d6ddce2e053",
   "fileCount": 10,
-  "createdAt": "2026-10-07T17:56:23.906Z",
-  "checkpoint": "Test evidence handoff: publish qualified run metadata before checkout",
+  "createdAt": "2026-10-07T17:58:40.963Z",
+  "checkpoint": "incremental source checkpoint; work in progress",
   "acceptance": "not-verified-by-this-commit"
 }

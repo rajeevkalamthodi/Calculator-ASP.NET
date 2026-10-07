@@ -4,20 +4,20 @@
     "port": 8000
   },
   "ui": {
-    "title": "Calculadora Web Forms",
+    "title": "Calculator",
     "heading": "Calculator",
     "labels": {
       "number1": "Number 1",
       "number2": "Number 2",
-      "result": "Resultado"
+      "result": "Result"
     },
     "buttons": {
-      "add": "Somar",
-      "subtract": "Subtrair",
-      "multiply": "Multiplicar",
-      "divide": "Dividir",
-      "power": "Potência",
-      "sqrt": "RaizQ"
+      "add": "Add",
+      "subtract": "Subtract",
+      "multiply": "Multiply",
+      "divide": "Divide",
+      "power": "Power",
+      "sqrt": "Sqrt"
     }
   }
 }
