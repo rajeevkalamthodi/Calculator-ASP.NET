@@ -4,10 +4,10 @@
   "jobId": "build_2cca44ee1093c9613843ac2c375a5e14",
   "stage": "test",
   "attempt": 2,
-  "snapshotId": "2-3-025c418824dc1d95",
-  "sourceHash": "025c418824dc1d951a392d1419744bb242aa6088771add83f217fb5b99285f95",
+  "snapshotId": "2-4-20a32f49f4a56d19",
+  "sourceHash": "20a32f49f4a56d196ecebf488af516713d3881a394acdfcace3d0f82f38dd1b9",
   "fileCount": 10,
-  "createdAt": "2026-10-07T17:59:40.901Z",
+  "createdAt": "2026-10-07T18:01:40.893Z",
   "checkpoint": "incremental source checkpoint; work in progress",
   "acceptance": "not-verified-by-this-commit"
 }

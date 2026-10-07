@@ -73,32 +73,32 @@ class CalculatorAppTests(unittest.TestCase):
     def test_addition(self):
         status, html = self.post({"txtNro1": "3", "txtNro2": "4", "operation": "add"})
         self.assertEqual(status, 200)
-        self.assertEqual(self.extract_result(html), "7")
+        self.assertEqual(self.extract_result(html), "7.0")
 
     def test_subtraction(self):
         status, html = self.post({"txtNro1": "7", "txtNro2": "4", "operation": "subtract"})
         self.assertEqual(status, 200)
-        self.assertEqual(self.extract_result(html), "3")
+        self.assertEqual(self.extract_result(html), "3.0")
 
     def test_multiplication(self):
         status, html = self.post({"txtNro1": "7", "txtNro2": "4", "operation": "multiply"})
         self.assertEqual(status, 200)
-        self.assertEqual(self.extract_result(html), "28")
+        self.assertEqual(self.extract_result(html), "28.0")
 
     def test_division(self):
         status, html = self.post({"txtNro1": "8", "txtNro2": "4", "operation": "divide"})
         self.assertEqual(status, 200)
-        self.assertEqual(self.extract_result(html), "2")
+        self.assertEqual(self.extract_result(html), "2.0")
 
     def test_power(self):
         status, html = self.post({"txtNro1": "2", "txtNro2": "3", "operation": "power"})
         self.assertEqual(status, 200)
-        self.assertEqual(self.extract_result(html), "8")
+        self.assertEqual(self.extract_result(html), "8.0")
 
     def test_square_root(self):
         status, html = self.post({"txtNro1": "9", "txtNro2": "0", "operation": "sqrt"})
         self.assertEqual(status, 200)
-        self.assertEqual(self.extract_result(html), "3")
+        self.assertEqual(self.extract_result(html), "3.0")
 
     def test_non_numeric_input_returns_server_error(self):
         encoded = urlencode({"txtNro1": "abc", "txtNro2": "1", "operation": "divide"}).encode("utf-8")
