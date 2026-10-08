@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculadora Web Forms</title>
+  </head>
+  <body>
+    <h1>Calculadora</h1>
+    <form method="post" action="/">
+      <label for="n1">Número 1</label>
+      <input id="n1" name="n1" type="text" value="{{ values.n1 }}">
+
+      <label for="n2">Número 2</label>
+      <input id="n2" name="n2" type="text" value="{{ values.n2 }}">
+
+      <div>
+        <button type="submit" name="operation" value="add">Somar</button>
+        <button type="submit" name="operation" value="subtract">Subtrair</button>
+        <button type="submit" name="operation" value="multiply">Multiplicar</button>
+        <button type="submit" name="operation" value="divide">Dividir</button>
+        <button type="submit" name="operation" value="power">Potência</button>
+        <button type="submit" name="operation" value="sqrt">Raiz Quadrada</button>
+      </div>
+    </form>
+
+    <p id="resultado">{{ result }}</p>
+    {% if error %}
+    <p id="erro">{{ error }}</p>
+    {% endif %}
+  </body>
+</html>
