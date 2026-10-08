@@ -3,11 +3,11 @@
   "projectId": "proj_123ff848cc43b80898a91682f132b43f",
   "jobId": "build_2cca44ee1093c9613843ac2c375a5e14",
   "stage": "test",
-  "attempt": 2,
-  "snapshotId": "2-12-01428b4ca4a5df7e",
-  "sourceHash": "01428b4ca4a5df7e6cd4f04ba79d8e93044ce980d85dceb8006f48f1aacb28f2",
+  "attempt": 3,
+  "snapshotId": "3-13-cdfa2f19537e1b0b",
+  "sourceHash": "cdfa2f19537e1b0b15de6a9c15e1b39a39fcc5f465b8ba00662fccd8c77dc712",
   "fileCount": 11,
-  "createdAt": "2026-10-08T00:41:09.098Z",
-  "checkpoint": "Source-grounded calculator correction prepared; portal Test required",
+  "createdAt": "2026-10-08T01:49:22.875Z",
+  "checkpoint": "plan: record frozen requirements and development branch",
   "acceptance": "not-verified-by-this-commit"
 }
