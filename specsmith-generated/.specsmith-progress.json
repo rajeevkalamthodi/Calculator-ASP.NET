@@ -4,10 +4,10 @@
   "jobId": "build_2cca44ee1093c9613843ac2c375a5e14",
   "stage": "test",
   "attempt": 2,
-  "snapshotId": "2-11-9c19654d4057ee09",
-  "sourceHash": "9c19654d4057ee09899a6ef175a291edc67fcab1800ffd781eeab8abb847aa6c",
-  "fileCount": 10,
-  "createdAt": "2026-10-07T18:16:29.335Z",
-  "checkpoint": "test stopped; work in progress",
+  "snapshotId": "2-12-01428b4ca4a5df7e",
+  "sourceHash": "01428b4ca4a5df7e6cd4f04ba79d8e93044ce980d85dceb8006f48f1aacb28f2",
+  "fileCount": 11,
+  "createdAt": "2026-10-08T00:41:09.098Z",
+  "checkpoint": "Source-grounded calculator correction prepared; portal Test required",
   "acceptance": "not-verified-by-this-commit"
 }

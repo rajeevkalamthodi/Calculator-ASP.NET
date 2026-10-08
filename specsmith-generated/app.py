@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import math
 import os
+import struct
 from dataclasses import dataclass
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -104,6 +105,13 @@ HTML_TEMPLATE = """<!doctype html>
 """
 
 
+def single(value: float) -> float:
+    try:
+        return struct.unpack("!f", struct.pack("!f", value))[0]
+    except OverflowError:
+        return math.copysign(math.inf, value)
+
+
 def parse_float(value: str | None) -> float:
     if value is None:
         raise TypeError("ArgumentNullException")
@@ -111,34 +119,44 @@ def parse_float(value: str | None) -> float:
         raise ValueError("FormatException")
 
     parsed = float(value)
+    # Framework parsing drops a textual negative zero before Single rounding.
+    parsed = single(0.0 if parsed == 0 else parsed)
     if math.isinf(parsed):
         raise FloatOverflowError("OverflowException")
     return parsed
 
 
-def format_number(value: float) -> str:
+def format_number(value: float, precision: int = 7) -> str:
     if math.isnan(value):
         return "NaN"
     if math.isinf(value):
         return "Infinity" if value > 0 else "-Infinity"
-    if float(value).is_integer():
-        return str(int(value))
-    return str(value)
+    if value == 0:
+        return "0"
+    return format(value, f".{precision}G")
 
 
 def calculate(operation: str, value1: str, value2: str) -> str:
     if operation == "add":
-        return format_number(parse_float(value1) + parse_float(value2))
+        return format_number(single(parse_float(value1) + parse_float(value2)))
     if operation == "subtract":
-        return format_number(parse_float(value1) - parse_float(value2))
+        return format_number(single(parse_float(value1) - parse_float(value2)))
     if operation == "multiply":
-        return format_number(parse_float(value1) * parse_float(value2))
+        return format_number(single(parse_float(value1) * parse_float(value2)))
     if operation == "divide":
-        return format_number(parse_float(value1) / parse_float(value2))
+        numerator, denominator = parse_float(value1), parse_float(value2)
+        if denominator == 0:
+            result = math.nan if numerator == 0 or math.isnan(numerator) else (
+                math.copysign(math.inf, numerator) * math.copysign(1, denominator)
+            )
+        else:
+            result = single(numerator / denominator)
+        return format_number(result)
     if operation == "power":
-        return format_number(parse_float(value1) ** parse_float(value2))
+        return format_number(parse_float(value1) ** parse_float(value2), 15)
     if operation == "sqrt":
-        return format_number(math.sqrt(parse_float(value1)))
+        operand = parse_float(value1)
+        return format_number(math.nan if operand < 0 else math.sqrt(operand), 15)
     return ""
 
 
@@ -150,7 +168,7 @@ class CalculatorHandler(BaseHTTPRequestHandler):
         if self.path != "/":
             self.respond(404, "text/plain; charset=utf-8", b"Not Found")
             return
-        self.render_page("", "", "")
+        self.render_page("", "", "0")
 
     def do_POST(self) -> None:
         if self.path != "/":

@@ -63,12 +63,13 @@ class CalculatorAppTests(unittest.TestCase):
             self.assertEqual(response.read().decode("utf-8"), "ok")
 
     def test_page_load_renders_without_result(self):
+        """Retain the historical case ID; the original ASPX result starts at zero."""
         with urlopen(self.url("/")) as response:
             html = response.read().decode("utf-8")
             status = response.status
         self.assertEqual(status, 200)
         self.assertIn("Calculator", html)
-        self.assertEqual(self.extract_result(html), "")
+        self.assertEqual(self.extract_result(html), "0")
 
     def test_addition(self):
         status, html = self.post({"txtNro1": "3", "txtNro2": "4", "operation": "add"})
@@ -108,18 +109,16 @@ class CalculatorAppTests(unittest.TestCase):
         self.assertEqual(error.exception.code, 500)
 
     def test_negative_square_root_returns_server_error(self):
-        encoded = urlencode({"txtNro1": "-1", "txtNro2": "0", "operation": "sqrt"}).encode("utf-8")
-        request = Request(self.url("/"), data=encoded, method="POST")
-        with self.assertRaises(HTTPError) as error:
-            urlopen(request)
-        self.assertEqual(error.exception.code, 500)
+        """Retain the historical case ID; Math.Sqrt(-1) displays NaN, not an error."""
+        status, html = self.post({"txtNro1": "-1", "txtNro2": "0", "operation": "sqrt"})
+        self.assertEqual(status, 200)
+        self.assertEqual(self.extract_result(html), "NaN")
 
     def test_divide_by_zero_returns_server_error(self):
-        encoded = urlencode({"txtNro1": "1", "txtNro2": "0", "operation": "divide"}).encode("utf-8")
-        request = Request(self.url("/"), data=encoded, method="POST")
-        with self.assertRaises(HTTPError) as error:
-            urlopen(request)
-        self.assertEqual(error.exception.code, 500)
+        """Retain the historical case ID; Single division by zero displays Infinity."""
+        status, html = self.post({"txtNro1": "1", "txtNro2": "0", "operation": "divide"})
+        self.assertEqual(status, 200)
+        self.assertEqual(self.extract_result(html), "Infinity")
 
 
 if __name__ == "__main__":
