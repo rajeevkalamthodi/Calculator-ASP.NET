@@ -1,7 +1,0 @@
-{
-  "name": "calculadorawebforms",
-  "private": true,
-  "scripts": {
-    "test": "python3 -m pytest"
-  }
-}
