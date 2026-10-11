@@ -5,14 +5,6 @@ import math
 import os
 
 PAGE_TITLE = "CalculadoraWebForms"
-OPERATIONS = {
-    "somar": "Somar",
-    "subtrair": "Subtrair",
-    "multiplicar": "Multiplicar",
-    "dividir": "Dividir",
-    "potencia": "Potência",
-    "raizq": "Raiz Quadrada",
-}
 
 
 def parse_float(raw: str) -> float:
@@ -25,6 +17,8 @@ def parse_float(raw: str) -> float:
 def format_number(value: float) -> str:
     if isinstance(value, float) and math.isnan(value):
         return "NaN"
+    if isinstance(value, float) and math.isinf(value):
+        return "Infinity" if value > 0 else "-Infinity"
     return format(value, "g")
 
 
@@ -44,8 +38,7 @@ def calculate_result(operation: str, txt_nro1: str, txt_nro2: str) -> str:
     if operation == "potencia":
         return format_number(math.pow(parse_float(txt_nro1), parse_float(txt_nro2)))
     if operation == "raizq":
-        value = parse_float(txt_nro1)
-        return format_number(math.sqrt(value))
+        return format_number(math.sqrt(parse_float(txt_nro1)))
     raise KeyError(operation)
 
 
@@ -156,6 +149,8 @@ class AppHandler(BaseHTTPRequestHandler):
             error_text = "Numeric overflow"
         except KeyError:
             error_text = "Unknown operation"
+        except ZeroDivisionError as exc:
+            error_text = f"Calculation error: {exc}"
         except Exception as exc:
             error_text = f"Calculation error: {exc}"
 
