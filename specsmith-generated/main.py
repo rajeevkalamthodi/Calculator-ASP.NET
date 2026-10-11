@@ -1,11 +1,63 @@
 from html import escape
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from urllib.parse import parse_qs
+import math
 import os
 
 PAGE_TITLE = "CalculadoraWebForms"
+OPERATIONS = {
+    "somar": "Somar",
+    "subtrair": "Subtrair",
+    "multiplicar": "Multiplicar",
+    "dividir": "Dividir",
+    "potencia": "Potência",
+    "raizq": "Raiz Quadrada",
+}
 
 
-def render_home() -> bytes:
+def parse_float(raw: str) -> float:
+    value = raw.strip()
+    if value == "":
+        raise ValueError("could not convert string to float: ''")
+    return float(value)
+
+
+def format_number(value: float) -> str:
+    if isinstance(value, float) and math.isnan(value):
+        return "NaN"
+    return format(value, "g")
+
+
+def calculate_result(operation: str, txt_nro1: str, txt_nro2: str) -> str:
+    if operation == "somar":
+        return format_number(parse_float(txt_nro1) + parse_float(txt_nro2))
+    if operation == "subtrair":
+        return format_number(parse_float(txt_nro1) - parse_float(txt_nro2))
+    if operation == "multiplicar":
+        return format_number(parse_float(txt_nro1) * parse_float(txt_nro2))
+    if operation == "dividir":
+        numerator = parse_float(txt_nro1)
+        denominator = parse_float(txt_nro2)
+        if denominator == 0:
+            return "Infinity" if numerator >= 0 else "-Infinity"
+        return format_number(numerator / denominator)
+    if operation == "potencia":
+        return format_number(math.pow(parse_float(txt_nro1), parse_float(txt_nro2)))
+    if operation == "raizq":
+        value = parse_float(txt_nro1)
+        return format_number(math.sqrt(value))
+    raise KeyError(operation)
+
+
+def render_home(
+    txt_nro1: str = "",
+    txt_nro2: str = "",
+    result_text: str = "Resultado",
+    error_text: str = "",
+) -> bytes:
+    error_html = (
+        f'<p class="error" id="error">{escape(error_text)}</p>' if error_text else ""
+    )
     html = f"""<!DOCTYPE html>
 <html lang=\"en\">
 <head>
@@ -22,31 +74,33 @@ def render_home() -> bytes:
     .buttons {{ display: flex; flex-wrap: wrap; gap: 0.5rem; }}
     button {{ padding: 0.55rem 0.9rem; font-size: 0.95rem; cursor: pointer; }}
     .result {{ margin-top: 1rem; font-weight: bold; }}
+    .error {{ margin-top: 0.5rem; color: #b00020; font-weight: bold; }}
   </style>
 </head>
 <body>
   <main>
     <h1>Calculadora</h1>
     <p>Calculator interface loaded through the main web entry point.</p>
-    <form>
+    <form method=\"post\">
       <div class=\"row\">
         <label for=\"txtNro1\">Número 1</label>
-        <input id=\"txtNro1\" name=\"txtNro1\" type=\"text\" />
+        <input id=\"txtNro1\" name=\"txtNro1\" type=\"text\" value=\"{escape(txt_nro1, quote=True)}\" />
       </div>
       <div class=\"row\">
         <label for=\"txtNro2\">Número 2</label>
-        <input id=\"txtNro2\" name=\"txtNro2\" type=\"text\" />
+        <input id=\"txtNro2\" name=\"txtNro2\" type=\"text\" value=\"{escape(txt_nro2, quote=True)}\" />
       </div>
       <div class=\"buttons\">
-        <button type=\"button\">Somar</button>
-        <button type=\"button\">Subtrair</button>
-        <button type=\"button\">Multiplicar</button>
-        <button type=\"button\">Dividir</button>
-        <button type=\"button\">Potência</button>
-        <button type=\"button\">Raiz Quadrada</button>
+        <button type=\"submit\" name=\"operation\" value=\"somar\">Somar</button>
+        <button type=\"submit\" name=\"operation\" value=\"subtrair\">Subtrair</button>
+        <button type=\"submit\" name=\"operation\" value=\"multiplicar\">Multiplicar</button>
+        <button type=\"submit\" name=\"operation\" value=\"dividir\">Dividir</button>
+        <button type=\"submit\" name=\"operation\" value=\"potencia\">Potência</button>
+        <button type=\"submit\" name=\"operation\" value=\"raizq\">Raiz Quadrada</button>
       </div>
     </form>
-    <div class=\"result\" id=\"lbResultado\">Resultado</div>
+    <div class=\"result\" id=\"lbResultado\">{escape(result_text)}</div>
+    {error_html}
   </main>
 </body>
 </html>"""
@@ -65,18 +119,51 @@ class AppHandler(BaseHTTPRequestHandler):
             return
 
         if self.path == "/":
-            body = render_home()
-            self.send_response(200)
-            self.send_header("Content-Type", "text/html; charset=utf-8")
-            self.send_header("Content-Length", str(len(body)))
-            self.end_headers()
-            self.wfile.write(body)
+            self.respond_html(render_home())
             return
 
         message = escape(self.path)
         body = f"Not Found: {message}".encode("utf-8")
         self.send_response(404)
         self.send_header("Content-Type", "text/plain; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def do_POST(self) -> None:
+        if self.path != "/":
+            self.send_error(404)
+            return
+
+        content_length = int(self.headers.get("Content-Length", "0"))
+        raw_body = self.rfile.read(content_length).decode("utf-8")
+        form = parse_qs(raw_body, keep_blank_values=True)
+        txt_nro1 = form.get("txtNro1", [""])[0]
+        txt_nro2 = form.get("txtNro2", [""])[0]
+        operation = form.get("operation", [""])[0]
+
+        result_text = "Resultado"
+        error_text = ""
+
+        try:
+            result_text = calculate_result(operation, txt_nro1, txt_nro2)
+        except ValueError as exc:
+            if operation == "raizq" and txt_nro1.strip() != "":
+                error_text = f"Calculation error: {exc}"
+            else:
+                error_text = "Invalid numeric input"
+        except OverflowError:
+            error_text = "Numeric overflow"
+        except KeyError:
+            error_text = "Unknown operation"
+        except Exception as exc:
+            error_text = f"Calculation error: {exc}"
+
+        self.respond_html(render_home(txt_nro1, txt_nro2, result_text, error_text))
+
+    def respond_html(self, body: bytes) -> None:
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)

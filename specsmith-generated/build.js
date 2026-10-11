@@ -20,28 +20,29 @@ const html = `<!DOCTYPE html>
     .buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     button { padding: 0.55rem 0.9rem; font-size: 0.95rem; cursor: pointer; }
     .result { margin-top: 1rem; font-weight: bold; }
+    .error { margin-top: 0.5rem; color: #b00020; font-weight: bold; }
   </style>
 </head>
 <body>
   <main>
     <h1>Calculadora</h1>
     <p>Calculator interface loaded through the main web entry point.</p>
-    <form>
+    <form method="post">
       <div class="row">
         <label for="txtNro1">Número 1</label>
-        <input id="txtNro1" name="txtNro1" type="text" />
+        <input id="txtNro1" name="txtNro1" type="text" value="" />
       </div>
       <div class="row">
         <label for="txtNro2">Número 2</label>
-        <input id="txtNro2" name="txtNro2" type="text" />
+        <input id="txtNro2" name="txtNro2" type="text" value="" />
       </div>
       <div class="buttons">
-        <button type="button">Somar</button>
-        <button type="button">Subtrair</button>
-        <button type="button">Multiplicar</button>
-        <button type="button">Dividir</button>
-        <button type="button">Potência</button>
-        <button type="button">Raiz Quadrada</button>
+        <button type="submit" name="operation" value="somar">Somar</button>
+        <button type="submit" name="operation" value="subtrair">Subtrair</button>
+        <button type="submit" name="operation" value="multiplicar">Multiplicar</button>
+        <button type="submit" name="operation" value="dividir">Dividir</button>
+        <button type="submit" name="operation" value="potencia">Potência</button>
+        <button type="submit" name="operation" value="raizq">Raiz Quadrada</button>
       </div>
     </form>
     <div class="result" id="lbResultado">Resultado</div>
