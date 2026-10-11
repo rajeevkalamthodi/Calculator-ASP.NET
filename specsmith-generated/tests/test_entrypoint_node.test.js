@@ -1,6 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const { spawn } = require('node:child_process');
+const { existsSync, readFileSync } = require('node:fs');
 
 async function waitForReady(port) {
   const deadline = Date.now() + 10000;
@@ -41,6 +42,17 @@ test('application loads through the web entry point and exposes health', async (
   const rootResponse = await fetch(`http://127.0.0.1:${port}/`);
   assert.equal(rootResponse.status, 200);
   const html = await rootResponse.text();
+  assert.match(html, /<h1>Calculadora<\/h1>/);
+  assert.match(html, /txtNro1/);
+  assert.match(html, /txtNro2/);
+  assert.match(html, /Somar/);
+  assert.match(html, /Resultado/);
+});
+
+test('frontend build emits dist index for the calculator page', async () => {
+  const htmlPath = 'dist/index.html';
+  assert.equal(existsSync(htmlPath), true);
+  const html = readFileSync(htmlPath, 'utf8');
   assert.match(html, /<h1>Calculadora<\/h1>/);
   assert.match(html, /txtNro1/);
   assert.match(html, /txtNro2/);
