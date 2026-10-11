@@ -7,6 +7,10 @@ import os
 PAGE_TITLE = "CalculadoraWebForms"
 
 
+def ignore_event_context(*_args: object) -> None:
+    return
+
+
 def parse_float(raw: str) -> float:
     value = raw.strip()
     if value == "":
