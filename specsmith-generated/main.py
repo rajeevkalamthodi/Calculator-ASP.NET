@@ -114,6 +114,7 @@ def render_home(
 
 class AppHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
+        ignore_event_context(self.command, self.path)
         if self.path == "/health":
             body = b"ok"
             self.send_response(200)
@@ -136,6 +137,7 @@ class AppHandler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_POST(self) -> None:
+        ignore_event_context(self.command, self.path)
         if self.path != "/":
             self.send_error(404)
             return
