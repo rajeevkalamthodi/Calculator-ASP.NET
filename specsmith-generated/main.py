@@ -14,6 +14,13 @@ def parse_float(raw: str) -> float:
     return float(value)
 
 
+def parse_strict_float(raw: str) -> float:
+    value = parse_float(raw)
+    if math.isinf(value) or math.isnan(value):
+        raise ValueError("non-finite float")
+    return value
+
+
 def format_number(value: float) -> str:
     if isinstance(value, float) and math.isnan(value):
         return "NaN"
@@ -24,23 +31,21 @@ def format_number(value: float) -> str:
 
 def calculate_result(operation: str, txt_nro1: str, txt_nro2: str) -> str:
     if operation == "somar":
-        return format_number(parse_float(txt_nro1) + parse_float(txt_nro2))
+        return format_number(parse_strict_float(txt_nro1) + parse_strict_float(txt_nro2))
     if operation == "subtrair":
-        return format_number(parse_float(txt_nro1) - parse_float(txt_nro2))
+        return format_number(parse_strict_float(txt_nro1) - parse_strict_float(txt_nro2))
     if operation == "multiplicar":
-        return format_number(parse_float(txt_nro1) * parse_float(txt_nro2))
+        return format_number(parse_strict_float(txt_nro1) * parse_strict_float(txt_nro2))
     if operation == "dividir":
-        numerator = parse_float(txt_nro1)
-        denominator = parse_float(txt_nro2)
+        numerator = parse_strict_float(txt_nro1)
+        denominator = parse_strict_float(txt_nro2)
         if denominator == 0:
-            raise ZeroDivisionError("float division by zero")
+            return "Infinity" if numerator >= 0 else "-Infinity"
         return format_number(numerator / denominator)
     if operation == "potencia":
-        return format_number(math.pow(parse_float(txt_nro1), parse_float(txt_nro2)))
+        return format_number(math.pow(parse_strict_float(txt_nro1), parse_strict_float(txt_nro2)))
     if operation == "raizq":
-        value = parse_float(txt_nro1)
-        if value < 0:
-            raise ArithmeticError("Function does not accept negative values")
+        value = parse_strict_float(txt_nro1)
         return format_number(math.sqrt(value))
     raise KeyError(operation)
 
@@ -143,8 +148,11 @@ class AppHandler(BaseHTTPRequestHandler):
 
         try:
             result_text = calculate_result(operation, txt_nro1, txt_nro2)
-        except ValueError:
-            error_text = "Invalid numeric input"
+        except ValueError as exc:
+            if str(exc) == "math domain error":
+                error_text = f"Calculation error: {exc}"
+            else:
+                error_text = "Invalid numeric input"
         except OverflowError:
             error_text = "Numeric overflow"
         except KeyError:
