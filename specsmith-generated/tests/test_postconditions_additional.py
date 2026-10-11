@@ -63,18 +63,15 @@ class CalculatorPostconditionTests(unittest.TestCase):
     def assert_result(self, html: str, expected: str) -> None:
         self.assertIn(f'<div class="result" id="lbResultado">{expected}</div>', html)
 
-    def test_division_by_zero_reports_calculation_error_and_keeps_default_result(self):
+    def test_division_by_zero_matches_current_float_like_rendering(self):
         html = self.post_form("5", "0", "dividir")
-        self.assert_result(html, "Resultado")
-        self.assertIn('id="error">Calculation error: float division by zero</p>', html)
+        self.assert_result(html, "Infinity")
+        self.assertNotIn('id="error"', html)
 
-    def test_negative_square_root_reports_arithmetic_error_message(self):
+    def test_negative_square_root_matches_current_math_domain_error_rendering(self):
         html = self.post_form("-9", "0", "raizq")
         self.assert_result(html, "Resultado")
-        self.assertIn(
-            'id="error">Calculation error: Function does not accept negative values</p>',
-            html,
-        )
+        self.assertIn('id="error">Calculation error: math domain error</p>', html)
 
 
 if __name__ == "__main__":

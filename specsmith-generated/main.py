@@ -33,15 +33,12 @@ def calculate_result(operation: str, txt_nro1: str, txt_nro2: str) -> str:
         numerator = parse_float(txt_nro1)
         denominator = parse_float(txt_nro2)
         if denominator == 0:
-            raise ZeroDivisionError("float division by zero")
+            return "Infinity" if numerator >= 0 else "-Infinity"
         return format_number(numerator / denominator)
     if operation == "potencia":
         return format_number(math.pow(parse_float(txt_nro1), parse_float(txt_nro2)))
     if operation == "raizq":
-        value = parse_float(txt_nro1)
-        if value < 0:
-            raise ArithmeticError("Function does not accept negative values")
-        return format_number(math.sqrt(value))
+        return format_number(math.sqrt(parse_float(txt_nro1)))
     raise KeyError(operation)
 
 
@@ -143,15 +140,16 @@ class AppHandler(BaseHTTPRequestHandler):
 
         try:
             result_text = calculate_result(operation, txt_nro1, txt_nro2)
-        except ValueError:
-            error_text = "Invalid numeric input"
+        except ValueError as exc:
+            if operation == "raizq" and txt_nro1.strip() != "":
+                error_text = f"Calculation error: {exc}"
+            else:
+                error_text = "Invalid numeric input"
         except OverflowError:
             error_text = "Numeric overflow"
         except KeyError:
             error_text = "Unknown operation"
         except ZeroDivisionError as exc:
-            error_text = f"Calculation error: {exc}"
-        except ArithmeticError as exc:
             error_text = f"Calculation error: {exc}"
         except Exception as exc:
             error_text = f"Calculation error: {exc}"
