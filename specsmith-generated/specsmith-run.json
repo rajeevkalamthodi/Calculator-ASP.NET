@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "runId": "65a7100c-6382-4287-9b23-97b5a9574e64",
+  "repository": "rajeevkalamthodi/Calculator-ASP.NET",
+  "branch": "feature/specsmith-proj_cd97cc58217b74d55465a93bcf4948e2-65a7100c-6382-4287-9b23-97b5a9574e64",
+  "baseCommitSha": "88748700ac857e9f163c3848ff472362c49568ab",
+  "directory": "specsmith-generated",
+  "requirementsHash": "db2902c817a2f0f66f69e6dffb948bc9761caa18a06f94036283262d2ca689a0",
+  "nativeInputSha256": "b34124adb1f57882dc5e0ff8a225729e98094eef3528f399209bf9ddb5a1f8cd",
+  "source": {
+    "scanJobId": "scan_a4f4c510cf28ec25d1c702ef475ffdf5",
+    "sourceRepository": "rajeevkalamthodi/calculator-asp.net",
+    "sourceCommit": "88748700ac857e9f163c3848ff472362c49568ab",
+    "specArtifactKey": "scans/scan_a4f4c510cf28ec25d1c702ef475ffdf5/attempts/1-scan-6562fb4d-c188-4311-87d6-c980cbdc0e23/spec.yaml",
+    "specSha256": "1195059e1ac7627ba8ef4cb8758c9db0275a9400a2740bad308547267b314f89"
+  },
+  "features": [
+    {
+      "id": "module-other",
+      "name": "Other",
+      "category": "module",
+      "summary": "This module is an ASP.NET Web Forms project file and associated page event surface for a simple calculator application. The listed functions such as Page_Load and the button click handlers for add, subtract, multiply, divide, power, and square root indicate it manages UI-driven request handling and user interactions r…",
+      "sourceRefs": [
+        "#/modules/calculadorawebforms~1calculadorawebforms",
+        "#/modules/calculadorawebforms~1calculadorawebforms/functions/EnsureNuGetPackageBuildImports",
+        "#/modules/calculadorawebforms~1index-aspx",
+        "#/modules/calculadorawebforms~1index-aspx/functions/Page_Load",
+        "#/modules/calculadorawebforms~1index-aspx/functions/btSomar_Click",
+        "#/modules/calculadorawebforms~1index-aspx/functions/btSubtrair_Click",
+        "#/modules/calculadorawebforms~1index-aspx/functions/btMultiplicar_Click",
+        "#/modules/calculadorawebforms~1index-aspx/functions/btDividir_Click",
+        "#/modules/calculadorawebforms~1index-aspx/functions/btPotencia_Click",
+        "#/modules/calculadorawebforms~1index-aspx/functions/btRaizq_Click"
+      ],
+      "sourceRefsComplete": true
+    },
+    {
+      "id": "data-model",
+      "name": "Data model",
+      "category": "data",
+      "summary": "0 data models and 1 custom type",
+      "sourceRefs": [
+        "#/types/EventArgs"
+      ],
+      "sourceRefsComplete": true
+    }
+  ],
+  "acceptance": "Requires measured requirement coverage and human review. No automatic merge."
+}

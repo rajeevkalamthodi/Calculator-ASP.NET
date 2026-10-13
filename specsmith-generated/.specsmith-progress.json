@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "projectId": "proj_cd97cc58217b74d55465a93bcf4948e2",
+  "jobId": "build_f0fe20833d83c74436a3e0b68cdb79de",
+  "stage": "build",
+  "attempt": 1,
+  "snapshotId": "1-1-550354c81b707880",
+  "sourceHash": "550354c81b707880cc4129579caf743c2708d2b194290f612662ff112e9871f0",
+  "fileCount": 1,
+  "createdAt": "2026-10-13T20:03:26.798Z",
+  "checkpoint": "plan: record frozen requirements and development branch",
+  "acceptance": "not-verified-by-this-commit"
+}
