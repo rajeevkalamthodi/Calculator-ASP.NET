@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "build": "node build.js",
-    "test": "node --test"
+    "test": "python -m pytest"
   }
 }
