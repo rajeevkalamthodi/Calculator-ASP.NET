@@ -1,7 +1,7 @@
 import html
 import math
 import os
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal, InvalidOperation, Overflow
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs
 
@@ -19,10 +19,13 @@ def parse_number(raw_value: str) -> Decimal:
 
 
 def decimal_to_result_text(value: Decimal) -> str:
-    normalized = value.normalize()
-    if normalized == normalized.to_integral():
-        normalized = normalized.quantize(Decimal("1"))
-    return format(normalized, "f")
+    try:
+        normalized = value.normalize()
+        if normalized == normalized.to_integral():
+            normalized = normalized.quantize(Decimal("1"))
+        return format(normalized, "f")
+    except (InvalidOperation, Overflow) as exc:
+        raise OverflowError("Numeric result is outside supported range") from exc
 
 
 def render_page(values: dict[str, str], result: str = "", error: str = "") -> str:
