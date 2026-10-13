@@ -1,0 +1,1776 @@
+{
+  "version": 1,
+  "specHash": "1195059e1ac7627ba8ef4cb8758c9db0275a9400a2740bad308547267b314f89",
+  "cases": [
+    {
+      "id": "business-logic-0001",
+      "name": "Function \"CalculadoraWebForms/CalculadoraWebForms.csproj#EnsureNuGetPackageBuildImports\" implements: Configure MSBuild defaults and import C# and web application targets.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/CalculadoraWebForms.csproj#EnsureNuGetPackageBuildImports",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/CalculadoraWebForms.csproj#EnsureNuGetPackageBuildImports",
+          "expected": "Configure MSBuild defaults and import C# and web application targets.",
+          "explanation": "This makes the test verifiable against concrete project-file elements instead of the vague statement 'configure defaults'."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/CalculadoraWebForms.csproj:EnsureNuGetPackageBuildImports",
+      "requirementId": "business-logic-0001",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0003",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#Page_Load\" implements: Handle page load event with no implemented behavior.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#Page_Load",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#Page_Load",
+          "expected": "Handle page load event with no implemented behavior.",
+          "explanation": "The current description says there is no implemented behavior; this assertion makes 'no behavior' observable."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:Page_Load",
+      "requirementId": "business-logic-0003",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0004",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#btSomar_Click\" implements: Adds two textbox values and shows the result label.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+          "expected": "Adds two textbox values and shows the result label.",
+          "explanation": "This identifies the required input source and numeric type rather than only saying it 'adds' values."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:btSomar_Click",
+      "requirementId": "business-logic-0004",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0008",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#btSubtrair_Click\" implements: Subtracts two text inputs and displays the result label.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+          "expected": "Subtracts two text inputs and displays the result label.",
+          "explanation": "Clarifies operand order, which is essential for subtraction."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:btSubtrair_Click",
+      "requirementId": "business-logic-0008",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0012",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click\" implements: Multiplies two textbox values and displays the result.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+          "expected": "Multiplies two textbox values and displays the result.",
+          "explanation": "Makes the required numeric conversion and operation explicit."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:btMultiplicar_Click",
+      "requirementId": "business-logic-0012",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0016",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#btDividir_Click\" implements: Divides two textbox values and shows the result label.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+          "expected": "Divides two textbox values and shows the result label.",
+          "explanation": "Clarifies required operand order for division."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:btDividir_Click",
+      "requirementId": "business-logic-0016",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0020",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#btPotencia_Click\" implements: Computes the first input raised to the second and displays it.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+          "expected": "Computes the first input raised to the second and displays it.",
+          "explanation": "Makes the underlying operation explicit and unambiguous."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:btPotencia_Click",
+      "requirementId": "business-logic-0020",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0024",
+      "name": "Function \"CalculadoraWebForms/index.aspx.cs#btRaizq_Click\" implements: Computes the square root of the first textbox value and displays it.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+          "expected": "Computes the square root of the first textbox value and displays it.",
+          "explanation": "Specifies that the operation uses only the first input and defines the exact calculation."
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "CalculadoraWebForms/index.aspx.cs:btRaizq_Click",
+      "requirementId": "business-logic-0024",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0028",
+      "name": "Project file preserves externally supplied build properties",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/CalculadoraWebForms.csproj#EnsureNuGetPackageBuildImports",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/CalculadoraWebForms.csproj property evaluation",
+          "expected": "When Configuration and Platform are already defined by the caller, the project file does not replace them with its fallback defaults.",
+          "explanation": "MSBuild defaults should be conditional, not unconditional."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0028",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0029",
+      "name": "Page_Load is idempotent across repeated invocations",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#Page_Load",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#Page_Load repeated execution",
+          "expected": "Multiple calls produce no cumulative changes to control values or output state.",
+          "explanation": "An empty page-load handler should remain side-effect free across postbacks or repeated invocation in tests."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0029",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0030",
+      "name": "Addition with negative and fractional operands",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSomar_Click with inputs -2.5 and 1.25",
+          "expected": "Result label contains the float sum -1.25.",
+          "explanation": "Confirms support for negative and fractional float inputs."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0030",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0033",
+      "name": "Subtraction preserves operand order",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click with inputs '2' and '5'",
+          "expected": "Result label contains -3, not 3.",
+          "explanation": "Ensures the implementation does not reverse operands."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0033",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0036",
+      "name": "Multiplication by zero",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click with inputs '0' and '123.45'",
+          "expected": "Result label contains 0.",
+          "explanation": "Confirms standard multiplicative behavior and proper float formatting for zero results."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0036",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0039",
+      "name": "Division preserves fractional results",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btDividir_Click with inputs '5' and '2'",
+          "expected": "Result label contains the float result 2.5.",
+          "explanation": "Confirms float arithmetic is used rather than integer division."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0039",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0042",
+      "name": "Power with zero exponent",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click with inputs '7' and '0'",
+          "expected": "Result label contains 1.",
+          "explanation": "Confirms the exponent is correctly applied and not ignored."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0042",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "business-logic-0045",
+      "name": "Square root of zero",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click with input '0'",
+          "expected": "Result label contains 0.",
+          "explanation": "Confirms correct handling of the lower non-negative boundary."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "business-logic-0045",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0005",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btSomar_Click\" handles: when textbox text is not parseable as float",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSomar_Click error",
+          "expected": "FormatException",
+          "explanation": "Clarifies that either input may trigger the error and ties the failure to float parsing."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0005",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0006",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btSomar_Click\" handles: when textbox text is null",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSomar_Click error",
+          "expected": "ArgumentNullException",
+          "explanation": "Specifies the exact null source and expected exception."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0006",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0009",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btSubtrair_Click\" handles: when textbox text is not a valid float",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click error",
+          "expected": "FormatException",
+          "explanation": "Defines the failure condition precisely for subtraction inputs."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0009",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0010",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btSubtrair_Click\" handles: when textbox text is null",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click error",
+          "expected": "ArgumentNullException",
+          "explanation": "States exactly what null condition should cause the failure."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0010",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0013",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click\" handles: when textbox text is not a valid float",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click error",
+          "expected": "FormatException",
+          "explanation": "Specifies exactly when the multiplication handler should fail."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0013",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0014",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click\" handles: when textbox text is null",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click error",
+          "expected": "ArgumentNullException",
+          "explanation": "Links the expected exception to the parsing of a null string."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0014",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0017",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btDividir_Click\" handles: when textbox text is not a valid float",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btDividir_Click error",
+          "expected": "FormatException",
+          "explanation": "Defines the invalid-input condition precisely."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0017",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0018",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btDividir_Click\" handles: when textbox text is null",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btDividir_Click error",
+          "expected": "ArgumentNullException",
+          "explanation": "Makes the null-input contract explicit for division."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0018",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0021",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btPotencia_Click\" handles: when textbox text is not numeric",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click error",
+          "expected": "FormatException",
+          "explanation": "Clarifies that both operands are subject to parsing validation."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0021",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0022",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btPotencia_Click\" handles: when textbox text is null",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click error",
+          "expected": "ArgumentNullException",
+          "explanation": "Makes the null-input contract explicit for both operands."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0022",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0025",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btRaizq_Click\" handles: input text is not a valid float",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click error",
+          "expected": "FormatException",
+          "explanation": "Replaces the vague phrase 'not a valid float' with a direct parsing requirement."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0025",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0026",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btRaizq_Click\" handles: input is outside float parse range",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click error",
+          "expected": "OverflowException",
+          "explanation": "Clarifies that the overflow occurs during parsing, not during the square-root operation itself."
+        }
+      ],
+      "priority": "high",
+      "requirementId": "error-handling-0026",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0031",
+      "name": "Addition rejects alphabetic input in either operand",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSomar_Click with inputs 'abc' and '2'",
+          "expected": "Throws FormatException before a result is written.",
+          "explanation": "Confirms failure occurs on the first invalid operand encountered."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0031",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0032",
+      "name": "Addition with one null and one valid operand",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSomar_Click with first Text null and second Text '5'",
+          "expected": "Throws ArgumentNullException and does not show a computed result.",
+          "explanation": "Confirms the handler does not ignore a null operand."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0032",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0034",
+      "name": "Subtraction rejects whitespace-surrounded invalid text",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click with inputs ' 4 ' and ' x '",
+          "expected": "Throws FormatException.",
+          "explanation": "Confirms invalid content is not accepted merely because it contains whitespace."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0034",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0035",
+      "name": "Subtraction with both textbox values null",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click with both Text values null",
+          "expected": "Throws ArgumentNullException.",
+          "explanation": "Covers the fully missing-input case, not only a single null operand."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0035",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0037",
+      "name": "Multiplication rejects mixed valid/invalid operands",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click with inputs '3.5' and 'not-a-number'",
+          "expected": "Throws FormatException.",
+          "explanation": "Ensures both operands must be parseable."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0037",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0038",
+      "name": "Multiplication with second operand null",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click with inputs '8' and null",
+          "expected": "Throws ArgumentNullException.",
+          "explanation": "Confirms null handling is symmetric across both operands."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0038",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0040",
+      "name": "Division rejects non-numeric denominator",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btDividir_Click with inputs '10' and 'two'",
+          "expected": "Throws FormatException.",
+          "explanation": "Confirms both operands are parsed and validated."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0040",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0041",
+      "name": "Division with null denominator",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btDividir_Click with inputs '10' and null",
+          "expected": "Throws ArgumentNullException.",
+          "explanation": "Confirms null handling on the denominator path."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0041",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0043",
+      "name": "Power rejects invalid exponent text",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click with inputs '2' and 'exp'",
+          "expected": "Throws FormatException.",
+          "explanation": "Confirms exponent parsing is required, not optional."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0043",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0044",
+      "name": "Power with null exponent",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click with inputs '2' and null",
+          "expected": "Throws ArgumentNullException.",
+          "explanation": "Confirms both operands are mandatory."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0044",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0046",
+      "name": "Square root rejects alphabetic input",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click with input 'sqrt'",
+          "expected": "Throws FormatException.",
+          "explanation": "Confirms only parseable float input is accepted."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0046",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "error-handling-0047",
+      "name": "Square root rejects extremely large numeric literal",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click with an input greater than float.MaxValue",
+          "expected": "Throws OverflowException.",
+          "explanation": "Covers the boundary between valid and out-of-range numeric text."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "error-handling-0047",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "inv-b23ec17b6667e6232606",
+      "requirementId": "inv-b23ec17b6667e6232606",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btMultiplicar_Click: invariant — Result text is product of parsed textbox values",
+      "category": "invariant",
+      "tier": "behavioral",
+      "target": "calculadorawebforms/index-aspx.btMultiplicar_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "invariant",
+          "subject": "btMultiplicar_Click",
+          "expected": "Result text is product of parsed textbox values",
+          "explanation": "Invariant from spec: Result text is product of parsed textbox values"
+        }
+      ],
+      "priority": "medium",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btMultiplicar_Click"
+    },
+    {
+      "id": "inv-ec16497b55c9e563dd0b",
+      "requirementId": "inv-ec16497b55c9e563dd0b",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1calculadorawebforms"
+      ],
+      "name": "EnsureNuGetPackageBuildImports: invariant — C# targets are always imported",
+      "category": "invariant",
+      "tier": "behavioral",
+      "target": "calculadorawebforms/calculadorawebforms.EnsureNuGetPackageBuildImports",
+      "targetFile": "CalculadoraWebForms/CalculadoraWebForms.csproj",
+      "assertions": [
+        {
+          "type": "invariant",
+          "subject": "EnsureNuGetPackageBuildImports",
+          "expected": "C# targets are always imported",
+          "explanation": "Invariant from spec: C# targets are always imported"
+        }
+      ],
+      "priority": "medium",
+      "sourceRef": "#/modules/calculadorawebforms~1calculadorawebforms/functions/EnsureNuGetPackageBuildImports"
+    },
+    {
+      "id": "pc-003b3b1a4f44f5cd39f7",
+      "requirementId": "pc-003b3b1a4f44f5cd39f7",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btMultiplicar_Click: on successful parsing => returns no value",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btMultiplicar_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btMultiplicar_Click",
+          "expected": "on successful parsing => returns no value",
+          "explanation": "Postcondition from spec: on successful parsing => returns no value"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse both textbox values",
+          "details": "Converts txtNro1.Text and txtNro2.Text to float",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text) * float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Compute product string",
+          "details": "Multiplies parsed numbers and converts result",
+          "calls": "ToString"
+        },
+        {
+          "step": 3,
+          "action": "Assign label text",
+          "details": "Stores result in lbResultado.Text"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btMultiplicar_Click"
+    },
+    {
+      "id": "pc-04b90450b88d10ef55e5",
+      "requirementId": "pc-04b90450b88d10ef55e5",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btSomar_Click: on successful parsing => sets label to numeric sum string",
+      "category": "postcondition",
+      "tier": "behavioral",
+      "target": "calculadorawebforms/index-aspx.btSomar_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btSomar_Click",
+          "expected": "on successful parsing => sets label to numeric sum string",
+          "explanation": "Postcondition from spec: on successful parsing => sets label to numeric sum string"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse first textbox",
+          "details": "Converts txtNro1.Text to float.",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Parse second textbox",
+          "details": "Converts txtNro2.Text to float.",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 3,
+          "action": "Sum and display",
+          "details": "Adds floats and assigns string result.",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = (float.Parse(txtNro1.Text) + float.Parse(txtNro2.Text)).ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btSomar_Click"
+    },
+    {
+      "id": "pc-0a1a63fc5093d55f3ba6",
+      "requirementId": "pc-0a1a63fc5093d55f3ba6",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btPotencia_Click: on when textbox text is null: raises ArgumentNullException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btPotencia_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btPotencia_Click",
+          "expected": "on when textbox text is null: raises ArgumentNullException",
+          "explanation": "Postcondition from spec: on when textbox text is null: raises ArgumentNullException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse both textbox values",
+          "details": "Converts txtNro1.Text and txtNro2.Text to float",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text), float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Compute power",
+          "details": "Raises first parsed number to second",
+          "calls": "Math.Pow",
+          "expression": "Math.Pow(float.Parse(txtNro1.Text), float.Parse(txtNro2.Text))"
+        },
+        {
+          "step": 3,
+          "action": "Display result",
+          "details": "Assigns stringified result to label",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = ...ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btPotencia_Click"
+    },
+    {
+      "id": "pc-135b217bc9cc30a6d713",
+      "requirementId": "pc-135b217bc9cc30a6d713",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btSubtrair_Click: after successful float parsing => sets lbResultado.Text to subtraction result st",
+      "category": "postcondition",
+      "tier": "behavioral",
+      "target": "calculadorawebforms/index-aspx.btSubtrair_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btSubtrair_Click",
+          "expected": "after successful float parsing => sets lbResultado.Text to subtraction result string",
+          "explanation": "Postcondition from spec: after successful float parsing => sets lbResultado.Text to subtraction result string"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse both textbox values",
+          "details": "Converts txtNro1.Text and txtNro2.Text to float",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text), float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Subtract parsed numbers",
+          "details": "Computes first value minus second value",
+          "expression": "float.Parse(txtNro1.Text) - float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 3,
+          "action": "Write result to label",
+          "details": "Stores stringified subtraction result in lbResultado.Text",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = (...).ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btSubtrair_Click"
+    },
+    {
+      "id": "pc-1d2ef8e5a89080547376",
+      "requirementId": "pc-1d2ef8e5a89080547376",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btRaizq_Click: on input text is not a valid float: raises FormatException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btRaizq_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btRaizq_Click",
+          "expected": "on input text is not a valid float: raises FormatException",
+          "explanation": "Postcondition from spec: on input text is not a valid float: raises FormatException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse textbox as float",
+          "details": "Reads txtNro1.Text and converts it.",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Compute square root",
+          "details": "Applies square root to parsed value.",
+          "calls": "Math.Sqrt",
+          "expression": "Math.Sqrt(float.Parse(txtNro1.Text))"
+        },
+        {
+          "step": 3,
+          "action": "Write result label",
+          "details": "Stores stringified result in lbResultado.Text.",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = Math.Sqrt(float.Parse(txtNro1.Text)).ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btRaizq_Click"
+    },
+    {
+      "id": "pc-3a7b877f3bd3d2af614a",
+      "requirementId": "pc-3a7b877f3bd3d2af614a",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btRaizq_Click: on successful parse and calculation => returns no value",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btRaizq_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btRaizq_Click",
+          "expected": "on successful parse and calculation => returns no value",
+          "explanation": "Postcondition from spec: on successful parse and calculation => returns no value"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse textbox as float",
+          "details": "Reads txtNro1.Text and converts it.",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Compute square root",
+          "details": "Applies square root to parsed value.",
+          "calls": "Math.Sqrt",
+          "expression": "Math.Sqrt(float.Parse(txtNro1.Text))"
+        },
+        {
+          "step": 3,
+          "action": "Write result label",
+          "details": "Stores stringified result in lbResultado.Text.",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = Math.Sqrt(float.Parse(txtNro1.Text)).ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btRaizq_Click"
+    },
+    {
+      "id": "pc-4d7ea30d839c8991f877",
+      "requirementId": "pc-4d7ea30d839c8991f877",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btDividir_Click: on when textbox text is null: raises ArgumentNullException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btDividir_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btDividir_Click",
+          "expected": "on when textbox text is null: raises ArgumentNullException",
+          "explanation": "Postcondition from spec: on when textbox text is null: raises ArgumentNullException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse both textbox values",
+          "details": "Uses float.Parse on txtNro1.Text and txtNro2.Text",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text) / float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Compute division result",
+          "details": "Divides first parsed float by second parsed float"
+        },
+        {
+          "step": 3,
+          "action": "Assign label text",
+          "details": "Converts result to string and stores in lbResultado.Text",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = (...).ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btDividir_Click"
+    },
+    {
+      "id": "pc-56a8c9679568f7ff4e36",
+      "requirementId": "pc-56a8c9679568f7ff4e36",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btSubtrair_Click: on when textbox text is not a valid float: raises FormatException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btSubtrair_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btSubtrair_Click",
+          "expected": "on when textbox text is not a valid float: raises FormatException",
+          "explanation": "Postcondition from spec: on when textbox text is not a valid float: raises FormatException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse both textbox values",
+          "details": "Converts txtNro1.Text and txtNro2.Text to float",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text), float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Subtract parsed numbers",
+          "details": "Computes first value minus second value",
+          "expression": "float.Parse(txtNro1.Text) - float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 3,
+          "action": "Write result to label",
+          "details": "Stores stringified subtraction result in lbResultado.Text",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = (...).ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btSubtrair_Click"
+    },
+    {
+      "id": "pc-73415d8641b433cf0c10",
+      "requirementId": "pc-73415d8641b433cf0c10",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btPotencia_Click: on when textbox text is not numeric: raises FormatException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btPotencia_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btPotencia_Click",
+          "expected": "on when textbox text is not numeric: raises FormatException",
+          "explanation": "Postcondition from spec: on when textbox text is not numeric: raises FormatException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse both textbox values",
+          "details": "Converts txtNro1.Text and txtNro2.Text to float",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text), float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Compute power",
+          "details": "Raises first parsed number to second",
+          "calls": "Math.Pow",
+          "expression": "Math.Pow(float.Parse(txtNro1.Text), float.Parse(txtNro2.Text))"
+        },
+        {
+          "step": 3,
+          "action": "Display result",
+          "details": "Assigns stringified result to label",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = ...ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btPotencia_Click"
+    },
+    {
+      "id": "pc-73cb2fa0d90542b1f89b",
+      "requirementId": "pc-73cb2fa0d90542b1f89b",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btSomar_Click: on when textbox text is null: raises ArgumentNullException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btSomar_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btSomar_Click",
+          "expected": "on when textbox text is null: raises ArgumentNullException",
+          "explanation": "Postcondition from spec: on when textbox text is null: raises ArgumentNullException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse first textbox",
+          "details": "Converts txtNro1.Text to float.",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Parse second textbox",
+          "details": "Converts txtNro2.Text to float.",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 3,
+          "action": "Sum and display",
+          "details": "Adds floats and assigns string result.",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = (float.Parse(txtNro1.Text) + float.Parse(txtNro2.Text)).ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btSomar_Click"
+    },
+    {
+      "id": "pc-a16c307b73d2691b8321",
+      "requirementId": "pc-a16c307b73d2691b8321",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btDividir_Click: on when textbox text is not a valid float: raises FormatException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btDividir_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btDividir_Click",
+          "expected": "on when textbox text is not a valid float: raises FormatException",
+          "explanation": "Postcondition from spec: on when textbox text is not a valid float: raises FormatException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse both textbox values",
+          "details": "Uses float.Parse on txtNro1.Text and txtNro2.Text",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text) / float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Compute division result",
+          "details": "Divides first parsed float by second parsed float"
+        },
+        {
+          "step": 3,
+          "action": "Assign label text",
+          "details": "Converts result to string and stores in lbResultado.Text",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = (...).ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btDividir_Click"
+    },
+    {
+      "id": "pc-b69b041534e55cfe9444",
+      "requirementId": "pc-b69b041534e55cfe9444",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btDividir_Click: on successful parsing and division => returns no value",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btDividir_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btDividir_Click",
+          "expected": "on successful parsing and division => returns no value",
+          "explanation": "Postcondition from spec: on successful parsing and division => returns no value"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse both textbox values",
+          "details": "Uses float.Parse on txtNro1.Text and txtNro2.Text",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text) / float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Compute division result",
+          "details": "Divides first parsed float by second parsed float"
+        },
+        {
+          "step": 3,
+          "action": "Assign label text",
+          "details": "Converts result to string and stores in lbResultado.Text",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = (...).ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btDividir_Click"
+    },
+    {
+      "id": "pc-d2053cd8df0d4b68f908",
+      "requirementId": "pc-d2053cd8df0d4b68f908",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btSubtrair_Click: on when textbox text is null: raises ArgumentNullException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btSubtrair_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btSubtrair_Click",
+          "expected": "on when textbox text is null: raises ArgumentNullException",
+          "explanation": "Postcondition from spec: on when textbox text is null: raises ArgumentNullException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse both textbox values",
+          "details": "Converts txtNro1.Text and txtNro2.Text to float",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text), float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Subtract parsed numbers",
+          "details": "Computes first value minus second value",
+          "expression": "float.Parse(txtNro1.Text) - float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 3,
+          "action": "Write result to label",
+          "details": "Stores stringified subtraction result in lbResultado.Text",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = (...).ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btSubtrair_Click"
+    },
+    {
+      "id": "pc-df1c0d95abd682d4b17d",
+      "requirementId": "pc-df1c0d95abd682d4b17d",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btPotencia_Click: on successful parsing => returns no value",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btPotencia_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btPotencia_Click",
+          "expected": "on successful parsing => returns no value",
+          "explanation": "Postcondition from spec: on successful parsing => returns no value"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse both textbox values",
+          "details": "Converts txtNro1.Text and txtNro2.Text to float",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text), float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Compute power",
+          "details": "Raises first parsed number to second",
+          "calls": "Math.Pow",
+          "expression": "Math.Pow(float.Parse(txtNro1.Text), float.Parse(txtNro2.Text))"
+        },
+        {
+          "step": 3,
+          "action": "Display result",
+          "details": "Assigns stringified result to label",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = ...ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btPotencia_Click"
+    },
+    {
+      "id": "pc-e05c2753e680d6d7a1b6",
+      "requirementId": "pc-e05c2753e680d6d7a1b6",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btRaizq_Click: on input is outside float parse range: raises OverflowException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btRaizq_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btRaizq_Click",
+          "expected": "on input is outside float parse range: raises OverflowException",
+          "explanation": "Postcondition from spec: on input is outside float parse range: raises OverflowException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse textbox as float",
+          "details": "Reads txtNro1.Text and converts it.",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Compute square root",
+          "details": "Applies square root to parsed value.",
+          "calls": "Math.Sqrt",
+          "expression": "Math.Sqrt(float.Parse(txtNro1.Text))"
+        },
+        {
+          "step": 3,
+          "action": "Write result label",
+          "details": "Stores stringified result in lbResultado.Text.",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = Math.Sqrt(float.Parse(txtNro1.Text)).ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btRaizq_Click"
+    },
+    {
+      "id": "pc-e6d60fd8188a1b6fea2e",
+      "requirementId": "pc-e6d60fd8188a1b6fea2e",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btMultiplicar_Click: on when textbox text is null: raises ArgumentNullException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btMultiplicar_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btMultiplicar_Click",
+          "expected": "on when textbox text is null: raises ArgumentNullException",
+          "explanation": "Postcondition from spec: on when textbox text is null: raises ArgumentNullException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse both textbox values",
+          "details": "Converts txtNro1.Text and txtNro2.Text to float",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text) * float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Compute product string",
+          "details": "Multiplies parsed numbers and converts result",
+          "calls": "ToString"
+        },
+        {
+          "step": 3,
+          "action": "Assign label text",
+          "details": "Stores result in lbResultado.Text"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btMultiplicar_Click"
+    },
+    {
+      "id": "pc-f28b36c978ad168b0e5b",
+      "requirementId": "pc-f28b36c978ad168b0e5b",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btMultiplicar_Click: on when textbox text is not a valid float: raises FormatException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btMultiplicar_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btMultiplicar_Click",
+          "expected": "on when textbox text is not a valid float: raises FormatException",
+          "explanation": "Postcondition from spec: on when textbox text is not a valid float: raises FormatException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse both textbox values",
+          "details": "Converts txtNro1.Text and txtNro2.Text to float",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text) * float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Compute product string",
+          "details": "Multiplies parsed numbers and converts result",
+          "calls": "ToString"
+        },
+        {
+          "step": 3,
+          "action": "Assign label text",
+          "details": "Stores result in lbResultado.Text"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btMultiplicar_Click"
+    },
+    {
+      "id": "pc-f928a766e306de787232",
+      "requirementId": "pc-f928a766e306de787232",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "Page_Load: when invoked => returns nothing",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.Page_Load",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "Page_Load",
+          "expected": "when invoked => returns nothing",
+          "explanation": "Postcondition from spec: when invoked => returns nothing"
+        }
+      ],
+      "algorithmSteps": [],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/Page_Load"
+    },
+    {
+      "id": "pc-fedc4c2b3e1f946eda05",
+      "requirementId": "pc-fedc4c2b3e1f946eda05",
+      "moduleRefs": [
+        "#/modules/calculadorawebforms~1index-aspx"
+      ],
+      "name": "btSomar_Click: on when textbox text is not parseable as float: raises FormatException",
+      "category": "postcondition",
+      "tier": "contract",
+      "target": "calculadorawebforms/index-aspx.btSomar_Click",
+      "targetFile": "CalculadoraWebForms/index.aspx.cs",
+      "assertions": [
+        {
+          "type": "postcondition",
+          "subject": "btSomar_Click",
+          "expected": "on when textbox text is not parseable as float: raises FormatException",
+          "explanation": "Postcondition from spec: on when textbox text is not parseable as float: raises FormatException"
+        }
+      ],
+      "algorithmSteps": [
+        {
+          "step": 1,
+          "action": "Parse first textbox",
+          "details": "Converts txtNro1.Text to float.",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro1.Text)"
+        },
+        {
+          "step": 2,
+          "action": "Parse second textbox",
+          "details": "Converts txtNro2.Text to float.",
+          "calls": "float.Parse",
+          "expression": "float.Parse(txtNro2.Text)"
+        },
+        {
+          "step": 3,
+          "action": "Sum and display",
+          "details": "Adds floats and assigns string result.",
+          "calls": "ToString",
+          "expression": "lbResultado.Text = (float.Parse(txtNro1.Text) + float.Parse(txtNro2.Text)).ToString()"
+        }
+      ],
+      "priority": "high",
+      "sourceRef": "#/modules/calculadorawebforms~1index-aspx/functions/btSomar_Click"
+    },
+    {
+      "id": "side-effect-0002",
+      "name": "\"CalculadoraWebForms/CalculadoraWebForms.csproj#EnsureNuGetPackageBuildImports\" side-effect: Modifies MSBuild property and import resolution.",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/CalculadoraWebForms.csproj#EnsureNuGetPackageBuildImports",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/CalculadoraWebForms.csproj#EnsureNuGetPackageBuildImports side-effect",
+          "expected": "other",
+          "explanation": "Modifies MSBuild property and import resolution."
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "side-effect-0002",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "side-effect-0007",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btSomar_Click\" side-effect: writes computed value to label",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSomar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSomar_Click side-effect",
+          "expected": "other",
+          "explanation": "writes computed value to label"
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "side-effect-0007",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "side-effect-0011",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btSubtrair_Click\" side-effect: updates server-side label text",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btSubtrair_Click side-effect",
+          "expected": "other",
+          "explanation": "updates server-side label text"
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "side-effect-0011",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "side-effect-0015",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click\" side-effect: updates UI label text",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btMultiplicar_Click side-effect",
+          "expected": "other",
+          "explanation": "updates UI label text"
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "side-effect-0015",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "side-effect-0019",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btDividir_Click\" side-effect: updates result label text",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btDividir_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btDividir_Click side-effect",
+          "expected": "other",
+          "explanation": "updates result label text"
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "side-effect-0019",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "side-effect-0023",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btPotencia_Click\" side-effect: writes computed text to UI label",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btPotencia_Click side-effect",
+          "expected": "other",
+          "explanation": "writes computed text to UI label"
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "side-effect-0023",
+      "featureIds": [],
+      "moduleRefs": []
+    },
+    {
+      "id": "side-effect-0027",
+      "name": "\"CalculadoraWebForms/index.aspx.cs#btRaizq_Click\" side-effect: updates UI label text",
+      "category": "function-behavior",
+      "tier": "behavioral",
+      "target": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click",
+      "assertions": [
+        {
+          "type": "behavior",
+          "subject": "CalculadoraWebForms/index.aspx.cs#btRaizq_Click side-effect",
+          "expected": "other",
+          "explanation": "updates UI label text"
+        }
+      ],
+      "priority": "medium",
+      "requirementId": "side-effect-0027",
+      "featureIds": [],
+      "moduleRefs": []
+    }
+  ],
+  "workflows": [
+    {
+      "id": "workflow-b244c420b4bd3651824c",
+      "description": "load project or runtime configuration from the Properties or XML-based application metadata"
+    },
+    {
+      "id": "workflow-cead3b0c6be82fcb6959",
+      "description": "initialize and run the main CalculadoraWebForms web application module"
+    }
+  ]
+}
