@@ -1,12 +1,22 @@
 const fs = require('fs');
 const path = require('path');
 
-const outDir = path.join(process.cwd(), 'src', 'frontend-build-artifact');
-const outFile = path.join(outDir, 'build.txt');
-const content = 'CalculadoraWebForms frontend placeholder build artifact\n';
+const distDir = path.join(process.cwd(), 'src', 'dist');
+const indexFile = path.join(distDir, 'index.html');
+const content = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CalculadoraWebForms</title>
+</head>
+<body>
+  <div id="root">CalculadoraWebForms frontend placeholder</div>
+</body>
+</html>
+`;
 
-fs.mkdirSync(outDir, { recursive: true });
-if (!fs.existsSync(outFile) || fs.readFileSync(outFile, 'utf8') !== content) {
-  fs.writeFileSync(outFile, content, 'utf8');
+fs.mkdirSync(distDir, { recursive: true });
+if (!fs.existsSync(indexFile) || fs.readFileSync(indexFile, 'utf8') !== content) {
+  fs.writeFileSync(indexFile, content, 'utf8');
 }
 console.log('frontend build complete');
