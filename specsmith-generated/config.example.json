@@ -2,5 +2,6 @@
   "visualStudioVersion": "10.0",
   "msBuildExtensionsPath32": "C:\\Program Files (x86)\\MSBuild",
   "vSToolsPath": "C:\\Program Files (x86)\\MSBuild\\Microsoft\\VisualStudio\\v10.0",
+  "cSharpTargetsProject": "$(MSBuildBinPath)\\Microsoft.CSharp.targets",
   "webApplicationTargetsProject": "$(VSToolsPath)\\WebApplications\\Microsoft.WebApplication.targets"
 }
