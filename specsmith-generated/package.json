@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "test": "node --test",
-    "build": "node --eval \"process.exit(0)\""
+    "build": "node build.js"
   }
 }
