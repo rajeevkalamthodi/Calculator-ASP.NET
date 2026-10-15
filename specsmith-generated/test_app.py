@@ -1,4 +1,3 @@
-import re
 import unittest
 from app import calculate, render_page
 

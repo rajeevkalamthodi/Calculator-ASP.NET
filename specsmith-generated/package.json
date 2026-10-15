@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "python -m unittest -v"
+    "test": "python3 -m unittest -v",
+    "build": "python3 -c \"print('build ok')\""
   }
 }
