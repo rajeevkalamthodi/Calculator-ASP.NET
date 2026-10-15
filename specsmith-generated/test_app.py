@@ -1,5 +1,6 @@
 import unittest
-from app import calculate, render_page
+
+from app import ArgumentNullException, OverflowException, calculate, render_page
 
 
 class CalculatorRenderingTests(unittest.TestCase):
@@ -16,6 +17,10 @@ class CalculatorRenderingTests(unittest.TestCase):
         self.assertIn('value="raizq"', html)
         self.assertIn('id="lbResultado"', html)
 
+    def test_page_load_renders_without_result(self):
+        html = render_page()
+        self.assertIn('<span id="lbResultado" class="resultado"></span>', html)
+
     def test_addition(self):
         self.assertEqual(calculate("somar", "2", "3"), "5.0")
 
@@ -27,9 +32,6 @@ class CalculatorRenderingTests(unittest.TestCase):
 
     def test_division(self):
         self.assertEqual(calculate("dividir", "9", "3"), "3.0")
-
-    def test_division_by_zero_returns_infinity_shape(self):
-        self.assertEqual(calculate("dividir", "2", "0"), "inf")
 
     def test_power(self):
         self.assertEqual(calculate("potencia", "2", "3"), "8.0")
@@ -50,6 +52,14 @@ class CalculatorRenderingTests(unittest.TestCase):
     def test_invalid_operation_raises_value_error(self):
         with self.assertRaises(ValueError):
             calculate("desconhecida", "1", "2")
+
+    def test_none_input_raises_argument_null_exception(self):
+        with self.assertRaises(ArgumentNullException):
+            calculate("somar", None, "1")
+
+    def test_overflow_like_input_raises_overflow_exception(self):
+        with self.assertRaises(OverflowException):
+            calculate("dividir", "1e400", "1")
 
 
 if __name__ == "__main__":

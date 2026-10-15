@@ -1,19 +1,23 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const { spawnSync } = require('node:child_process');
-const path = require('node:path');
 
 const projectRoot = __dirname;
 
-function runCalculator(operation, nro1, nro2) {
-  const script = `
-from app import calculate
-print(calculate(${JSON.stringify(operation)}, ${JSON.stringify(nro1)}, ${JSON.stringify(nro2)}))
-`;
+function runPython(script) {
   const result = spawnSync('python3', ['-c', script], {
     cwd: projectRoot,
     encoding: 'utf8'
   });
+
+  return result;
+}
+
+function runCalculator(operation, nro1, nro2) {
+  const result = runPython(`
+from app import calculate
+print(calculate(${JSON.stringify(operation)}, ${JSON.stringify(nro1)}, ${JSON.stringify(nro2)}))
+`);
 
   if (result.status !== 0) {
     throw new Error(result.stderr || result.stdout || 'python execution failed');
@@ -23,14 +27,10 @@ print(calculate(${JSON.stringify(operation)}, ${JSON.stringify(nro1)}, ${JSON.st
 }
 
 function renderPage() {
-  const script = `
+  const result = runPython(`
 from app import render_page
 print(render_page())
-`;
-  const result = spawnSync('python3', ['-c', script], {
-    cwd: projectRoot,
-    encoding: 'utf8'
-  });
+`);
 
   if (result.status !== 0) {
     throw new Error(result.stderr || result.stdout || 'python execution failed');
@@ -53,6 +53,11 @@ test('renders calculator controls on the main page', () => {
   assert.match(html, /id="lbResultado"/);
 });
 
+test('page load keeps the result area empty before any calculation', () => {
+  const html = renderPage();
+  assert.match(html, /<span id="lbResultado" class="resultado"><\/span>/);
+});
+
 test('performs arithmetic operations through calculator logic', () => {
   assert.equal(runCalculator('somar', '2', '3'), '5.0');
   assert.equal(runCalculator('subtrair', '7', '2'), '5.0');
@@ -63,15 +68,27 @@ test('performs arithmetic operations through calculator logic', () => {
 });
 
 test('preserves source-like invalid input failure behavior', () => {
-  const script = `
+  const result = runPython(`
 from app import calculate
 calculate('somar', 'abc', '1')
-`;
-  const result = spawnSync('python3', ['-c', script], {
-    cwd: projectRoot,
-    encoding: 'utf8'
-  });
+`);
 
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /ValueError/);
+});
+
+test('preserves source-like null and overflow failure shapes', () => {
+  const noneResult = runPython(`
+from app import calculate
+calculate('somar', None, '1')
+`);
+  assert.notEqual(noneResult.status, 0);
+  assert.match(noneResult.stderr, /ArgumentNullException/);
+
+  const overflowResult = runPython(`
+from app import calculate
+calculate('dividir', '1e400', '1')
+`);
+  assert.notEqual(overflowResult.status, 0);
+  assert.match(overflowResult.stderr, /OverflowException/);
 });
