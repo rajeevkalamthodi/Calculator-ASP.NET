@@ -8,33 +8,19 @@ from urllib.parse import parse_qs
 TITLE = "CalculadoraWebForms"
 
 
-class OverflowException(OverflowError):
-    pass
-
-
-class ArgumentNullException(TypeError):
-    pass
-
-
-def parse_float(value: str | None) -> float:
-    if value is None:
-        raise ArgumentNullException("Value cannot be null")
-
-    lowered = value.strip().lower()
-    if lowered in {"inf", "+inf", "infinity", "+infinity", "-inf", "-infinity", "nan"}:
-        raise OverflowException("Value was either too large or too small for a Single.")
-
-    parsed = float(value)
-    if math.isinf(parsed):
-        raise OverflowException("Value was either too large or too small for a Single.")
-    return parsed
+def parse_float(value: str) -> float:
+    return float(value)
 
 
 def format_result(value: float) -> str:
+    if isinstance(value, float) and math.isnan(value):
+        return "nan"
+    if isinstance(value, float) and math.isinf(value):
+        return "inf" if value > 0 else "-inf"
     return str(value)
 
 
-def calculate(operation: str, nro1_text: str | None, nro2_text: str | None) -> str:
+def calculate(operation: str, nro1_text: str, nro2_text: str | None) -> str:
     if operation == "somar":
         return format_result(parse_float(nro1_text) + parse_float(nro2_text))
     if operation == "subtrair":
@@ -42,11 +28,17 @@ def calculate(operation: str, nro1_text: str | None, nro2_text: str | None) -> s
     if operation == "multiplicar":
         return format_result(parse_float(nro1_text) * parse_float(nro2_text))
     if operation == "dividir":
-        return format_result(parse_float(nro1_text) / parse_float(nro2_text))
+        divisor = parse_float(nro2_text)
+        dividend = parse_float(nro1_text)
+        if divisor == 0.0:
+            if dividend == 0.0:
+                return "nan"
+            return "inf" if dividend > 0 else "-inf"
+        return format_result(dividend / divisor)
     if operation == "potencia":
-        return format_result(math.pow(parse_float(nro1_text), parse_float(nro2_text)))
+        return str(math.pow(parse_float(nro1_text), parse_float(nro2_text)))
     if operation == "raizq":
-        return format_result(math.sqrt(parse_float(nro1_text)))
+        return str(math.sqrt(parse_float(nro1_text)))
     raise ValueError("Operação inválida")
 
 
